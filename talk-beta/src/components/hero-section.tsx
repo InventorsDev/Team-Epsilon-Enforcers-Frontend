@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import humanBrainImage from "../assets/ai-human-brain.jpg";
+import { Link } from "react-router-dom";
 
 export function HeroSection() {
   return (
@@ -14,12 +15,12 @@ export function HeroSection() {
             master fluency. Practice in real time, and unlock the power of your
             voice.
           </p>
-          <Button
-            size="lg"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8"
+          <Link
+            to="/signup"
+            className="inline-flex items-center justify-center px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white hover:text-white font-bold rounded-xl transition-all duration-200 hover:shadow-lg hover:scale-105 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none active:scale-95"
           >
             Get Started
-          </Button>
+          </Link>
         </div>
         <div className="flex justify-center">
           <div className="relative">
