@@ -50,9 +50,10 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+
 a {
-  font-weight: 500;
-  color: #646cff;
+  font-weight: 400;
+  color: #171A1FFF;
   text-decoration: inherit;
 }
 a:hover {
