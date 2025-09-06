@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Mic } from "lucide-react";
 
-export function LoginForm() {
+export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -18,7 +18,7 @@ export function LoginForm() {
     console.log("Login attempt:", { email, password, rememberMe });
   };
 
-  const handleGoogleSignIn = () => {
+  const handleGoogleSignUp = () => {
     // Handle Google sign-in logic here
     console.log("Google sign-in attempt");
   };
@@ -35,14 +35,14 @@ export function LoginForm() {
         </div>
 
         <h1 className="text-2xl text-left font-bold text-[#001F54] mb-2 text-balance">
-          Welcome back to Talk Beta!
+          Sign Up to get Started
         </h1>
         <p className="text-[#616161] text-sm text-left">
-          Sign in to continue your fluency journey
+          Create an account to unlock tools for confidet speaking
         </p>
       </div>
 
-      {/* Login Form */}
+      {/* Sign Up Form */}
       <form
         onSubmit={handleSubmit}
         className="space-y-2"
@@ -108,7 +108,7 @@ export function LoginForm() {
           type="submit"
           className="w-full h-12 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
         >
-          Log In
+          Sign Up
         </Button>
 
         <div className="relative my-6">
@@ -123,7 +123,7 @@ export function LoginForm() {
         <Button
           type="button"
           variant="outline"
-          onClick={handleGoogleSignIn}
+          onClick={handleGoogleSignUp}
           className="w-full h-12 rounded-lg border-border bg-background hover:bg-muted/50"
         >
           <svg
@@ -147,7 +147,7 @@ export function LoginForm() {
               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
             />
           </svg>
-          Sign in with Google
+          Sign up with Google
         </Button>
 
         <div className="text-center mt-6">
@@ -157,7 +157,7 @@ export function LoginForm() {
               type="button"
               className="text-primary hover:underline font-medium"
             >
-              Sign Up
+              Sign In
             </button>
           </span>
         </div>
