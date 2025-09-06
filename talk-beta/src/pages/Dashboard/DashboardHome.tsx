@@ -1,63 +1,14 @@
+import NavBar from "@/components/navBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mic, Book, BarChart3 } from "lucide-react";
-import { NavLink } from "react-router-dom";
 
 export default function DashboardHome() {
-  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-    isActive
-      ? "text-blue-600 font-medium"
-      : "text-gray-600 hover:text-gray-900";
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Header Navigation */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center justify-between max-w-7xl mx-auto">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="text-blue-600 text-2xl font-bold">✱ Talk Beta</div>
-          </div>{" "}
-          <nav className="flex items-center gap-8">
-            <NavLink
-              to="/dashboard"
-              className={navLinkClass}
-            >
-              Dashboard
-            </NavLink>
-            <NavLink
-              to="/practice-area"
-              className={navLinkClass}
-            >
-              Practice Area
-            </NavLink>
-            <NavLink
-              to="/view-analysis"
-              className={navLinkClass}
-            >
-              View Analysis
-            </NavLink>
-            <NavLink
-              to="/practice-page"
-              className={navLinkClass}
-            >
-              Practice Page
-            </NavLink>
-            <NavLink
-              to="/learning-resources"
-              className={navLinkClass}
-            >
-              Learning Resources
-            </NavLink>
-            <NavLink
-              to="/profile"
-              className={navLinkClass}
-            >
-              Profile
-            </NavLink>{" "}
-          </nav>
-        </div>
-      </header>
+      <NavBar />
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 py-12">
@@ -78,7 +29,7 @@ export default function DashboardHome() {
         {/* Feature Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* New Practice Session Card */}
-          <Card className="bg-blue-50 border-0 rounded-2xl p-8">
+          <Card className="bg-blue-50 border-0 rounded-2xl p-8 hover:shadow-lg transition-shadow">
             <CardContent className="p-0 text-center">
               <div className="bg-blue-200 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                 <Mic className="w-8 h-8 text-blue-600" />
@@ -96,7 +47,7 @@ export default function DashboardHome() {
           </Card>
 
           {/* Explore Exercises Card */}
-          <Card className="bg-blue-50 border-0 rounded-2xl p-8">
+          <Card className="bg-blue-50 border-0 rounded-2xl p-8 hover:shadow-lg transition-shadow">
             <CardContent className="p-0 text-center">
               <div className="bg-blue-200 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                 <Book className="w-8 h-8 text-blue-600" />
@@ -115,7 +66,7 @@ export default function DashboardHome() {
           </Card>
 
           {/* View Detailed Reports Card */}
-          <Card className="bg-blue-50 border-0 rounded-2xl p-8">
+          <Card className="bg-blue-50 border-0 rounded-2xl p-8 hover:shadow-lg transition-shadow">
             <CardContent className="p-0 text-center">
               <div className="bg-blue-200 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
                 <BarChart3 className="w-8 h-8 text-blue-600" />

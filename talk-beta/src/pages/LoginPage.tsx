@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Mic } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -165,7 +166,7 @@ export default function LoginPage() {
               type="button"
               className="text-primary hover:underline font-medium"
             >
-              Sign Up
+              <Link to="/signup">Sign Up</Link>
             </button>
           </span>
         </div>
