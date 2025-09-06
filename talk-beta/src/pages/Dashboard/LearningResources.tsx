@@ -1,18 +1,18 @@
 import { Mic, SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Mastering from "../assets/Mastering Pronunciation of.png"
-import Pacing from "../assets/Pacing Your Speech for Clarity.png";
-import Intonation from "../assets/Intonation and Stress Patterns.png";
-import Openings from "../assets/Crafting Compelling Openings.png";
-import PublicSpeaking from "../assets/Overcoming Public Speaking Anxiety.png";
-import ActiveListening from "../assets/The Power of Active Listening.png";
-import VoiceTraining from "../assets/Building Charisma in Your Voice.png";
-import Persuasion from "../assets/The Art of Persuasion in Daily Life.png";
-import FillerWords from "../assets/Common Filler Word Elimination.png";
-import Accents from "../assets/Managing Accents for Global Communication.png";
-import Storytelling from "../assets/Effective Storytelling Techniques.png";
-import BodyLanguage from "../assets/Body Language for Confident Speakers.png";
+import Mastering from "@/assets/Mastering Pronunciation of.png";
+import Pacing from "@/assets/Pacing Your Speech for Clarity.png";
+import Intonation from "@/assets/Intonation and Stress Patterns.png";
+import Openings from "@/assets/Crafting Compelling Openings.png";
+import PublicSpeaking from "@/assets/Overcoming Public Speaking Anxiety.png";
+import ActiveListening from "@/assets/The Power of Active Listening.png";
+import VoiceTraining from "@/assets/Building Charisma in Your Voice.png";
+import Persuasion from "@/assets/The Art of Persuasion in Daily Life.png";
+import FillerWords from "@/assets/Common Filler Word Elimination.png";
+import Accents from "@/assets/Managing Accents for Global Communication.png";
+import Storytelling from "@/assets/Effective Storytelling Techniques.png";
+import BodyLanguage from "@/assets/Body Language for Confident Speakers.png";
 
 
 import {
@@ -23,59 +23,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import NavBar from "@/components/navBar";
 
 export default function LearningResourcesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Navigation Header */}
-      <header className="bg-white border-b border-gray-200">
-        <div className="">
-          <div className="flex items-center justify-between h-16 ">
-            <div className="flex items-center space-x-8">
-              {/* <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                  <span className="text-white text-xs">🎤</span>
-                </div>
-                <span className="text-xl font-semibold text-blue-600">
-                  Talk Beta
-                </span>
-              </div> */}
+      {/* Header Navigation */}
+      <NavBar />
 
-              <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                  <Mic className="w-3 h-3 text-primary-foreground" />
-                </div>
-                <span className="text-primary font-semibold text-sm">
-                  Talk Beta
-                </span>
-              </div>
-              <nav className="hidden md:flex space-x-8 text-sm">
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Dashboard
-                </a>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Practice Area
-                </a>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  View Analysis
-                </a>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Practice Page
-                </a>
-                <a href="#" className="text-blue-600 font-medium">
-                  Learning Resources
-                </a>
-                <a href="#" className="text-gray-600 hover:text-gray-900">
-                  Profile
-                </a>
-              </nav>
-            </div>
-            <Button className="bg-blue-600 hover:bg-blue-700">Sign Out</Button>
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-10 bg-white">
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -94,7 +50,7 @@ export default function LearningResourcesPage() {
             <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
             <Input
               placeholder="Search resources..."
-              className="pl-10 h-12 border-[#DEE1E6FF] rounded-[6px] w-[448px] text-sm hover:text-[#565D6DFF]  "
+              className="pl-10 h-12 border-[#DEE1E6FF] rounded-[6px] md:w-[448px] text-sm hover:text-[#565D6DFF]  "
             />
           </div>
           <div className="flex gap-2">

@@ -1,45 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export function Header() {
   return (
-    <header className="w-full px-6 py-0 flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="w-4 h-4 text-white"
-          >
-            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-            <line
-              x1="12"
-              x2="12"
-              y1="19"
-              y2="22"
-            />
-            <line
-              x1="8"
-              x2="16"
-              y1="22"
-              y2="22"
-            />
-          </svg>
-        </div>
-        <span className="text-lg font-semibold text-blue-600">Talk Beta</span>
+    <header className="w-full px-6 py-8 flex items-center justify-between">
+      <div className="flex items-center space-x-2">
+        <img src={logo} alt="" className="w-16" />
+        <span
+          className="text-lg font-extrabold text-blue-600 -ml-8"
+          style={{ fontFamily: "Borel, cursive" }}
+        >
+          Talk Beta
+        </span>
       </div>
-      <Button
-        variant="outline"
-        asChild
-        className="text-blue-600 border-blue-600 hover:bg-blue-50 bg-transparent"
-      >
-        <Link to="/login">Log in</Link>
-      </Button>
+      <Button className="bg-blue-600 hover:bg-blue-700">Log In</Button>
     </header>
   );
 }
