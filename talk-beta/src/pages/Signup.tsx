@@ -7,20 +7,22 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Mic } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function SignUpForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle login logic here
+    e.preventDefault(); // Handle login logic here
     console.log("Login attempt:", { email, password, rememberMe });
   };
 
   const handleGoogleSignUp = () => {
     // Handle Google sign-in logic here
+    navigate("/dashboard");
     console.log("Google sign-in attempt");
   };
 
@@ -44,9 +46,15 @@ export function SignUpForm() {
       </div>
 
       {/* Sign Up Form */}
-      <form onSubmit={handleSubmit} className="space-y-2">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-2"
+      >
         <div className="space-y-1">
-          <Label htmlFor="email" className="text-sm font-normal text-[#212121]">
+          <Label
+            htmlFor="email"
+            className="text-sm font-normal text-[#212121]"
+          >
             Email
           </Label>
           <Input
@@ -121,7 +129,10 @@ export function SignUpForm() {
           onClick={handleGoogleSignUp}
           className="w-full h-12 rounded-lg border-border bg-background hover:bg-muted/50"
         >
-          <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
+          <svg
+            className="w-5 h-5 mr-2"
+            viewBox="0 0 24 24"
+          >
             <path
               fill="#4285F4"
               d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
