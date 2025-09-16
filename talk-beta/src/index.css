@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -50,7 +50,6 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-
 /* a {
   font-weight: 400;
   color: #171A1FFF;
@@ -68,10 +67,6 @@ body {
   min-height: 100vh;
 }
 
-
-
-
-
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -86,7 +81,7 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
   }
 }
 
