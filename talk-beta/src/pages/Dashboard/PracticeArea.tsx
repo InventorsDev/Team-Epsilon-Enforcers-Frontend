@@ -62,10 +62,10 @@ export default function PracticeArea() {
               </div>
 
               {/* Audio Waveform Visualization */}
-              <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500 rounded-lg p-4 h-32 flex items-center justify-center">
+              <div className="bg-gradient-to-r from-blue-500 via-[#5E6795] to-orange-500 rounded p-4 h-32 flex items-center justify-center">
                 <div className="flex items-end space-x-1 h-20">
                   {/* Waveform bars */}
-                  {Array.from({ length: 60 }).map((_, i) => (
+                  {Array.from({ length: 70 }).map((_, i) => (
                     <div
                       key={i}
                       className="bg-white rounded-full opacity-80"
