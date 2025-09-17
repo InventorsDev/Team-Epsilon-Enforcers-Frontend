@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import AImic from "../assets/ai-mic.jpg";
-import cubeImage from "../assets/cube-image.jpg"
-import feedback from "../assets/feedback.jpg"
+import cubeImage from "../assets/cube-image.jpg";
+import feedback from "../assets/feedback.jpg";
 
 export function HowItWorksSection() {
   return (
@@ -21,12 +22,14 @@ export function HowItWorksSection() {
               Easily record your voice directly in the app or upload audio files
               in formats like WAV, MP3, or M4A.
             </p>
-            <Button
-              variant="outline"
-              className="text-blue-600 border-blue-600 hover:bg-blue-50 bg-transparent"
-            >
-              Get Started
-            </Button>
+            <Link to="/signup">
+              <Button
+                variant="outline"
+                className="text-blue-600 border-blue-600 hover:bg-blue-50 bg-transparent"
+              >
+                Get Started
+              </Button>
+            </Link>
           </div>
           <div className="flex justify-center">
             <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg">
@@ -64,12 +67,14 @@ export function HowItWorksSection() {
               analyzed and transcribed within seconds, while our FastAPI-powered
               backend ensures smooth, low-latency performance.
             </p>
-            <Button
-              variant="outline"
-              className="text-blue-600 border-blue-600 hover:bg-blue-50 bg-transparent"
-            >
-              Get Started
-            </Button>
+            <Link to="/signup">
+              <Button
+                variant="outline"
+                className="text-blue-600 border-blue-600 hover:bg-blue-50 bg-transparent"
+              >
+                Get Started
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -85,12 +90,14 @@ export function HowItWorksSection() {
               time, helping you see how your speaking skills improve with every
               session.
             </p>
-            <Button
-              variant="outline"
-              className="text-blue-600 border-blue-600 hover:bg-blue-50 bg-transparent"
-            >
-              Get Started
-            </Button>
+            <Link to="/signup">
+              <Button
+                variant="outline"
+                className="text-blue-600 border-blue-600 hover:bg-blue-50 bg-transparent"
+              >
+                Get Started
+              </Button>
+            </Link>
           </div>
           <div className="flex justify-center">
             <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg">
