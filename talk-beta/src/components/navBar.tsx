@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router-dom';
-import { Button } from './ui/button';
-import { Mic } from 'lucide-react';
+import { NavLink } from "react-router-dom";
+import { Button } from "./ui/button";
+import { Mic } from "lucide-react";
 import logo from "../assets/logo.png";
 
 const NavBar = () => {
@@ -14,7 +14,11 @@ const NavBar = () => {
               {/* <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
                   <Mic className="w-3 h-3 text-primary-foreground" />
                 </div> */}
-              <img src={logo} alt="logo" className="w-16" />
+              <img
+                src={logo}
+                alt="logo"
+                className="w-16"
+              />
 
               <span
                 className="text-lg font-extrabold text-blue-600 -ml-8"
@@ -94,6 +98,6 @@ const NavBar = () => {
       </header>
     </>
   );
-}
+};
 
-export default NavBar
+export default NavBar;
