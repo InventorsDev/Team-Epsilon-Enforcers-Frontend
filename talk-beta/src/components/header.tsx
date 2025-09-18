@@ -1,11 +1,16 @@
 import { Button } from "@/components/ui/button";
 import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 export function Header() {
   return (
     <header className="w-full px-6 py-8 flex items-center justify-between">
       <div className="flex items-center space-x-2">
-        <img src={logo} alt="" className="w-16" />
+        <img
+          src={logo}
+          alt=""
+          className="w-16"
+        />
         <span
           className="text-lg font-extrabold text-blue-600 -ml-8"
           style={{ fontFamily: "Borel, cursive" }}
@@ -13,7 +18,9 @@ export function Header() {
           Talk Beta
         </span>
       </div>
-      <Button className="bg-blue-600 hover:bg-blue-700">Log In</Button>
+      <Link to="/login">
+        <Button className="bg-blue-600 hover:bg-blue-700">Log In</Button>
+      </Link>
     </header>
   );
 }
