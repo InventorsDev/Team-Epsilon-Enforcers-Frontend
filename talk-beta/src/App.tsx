@@ -9,6 +9,7 @@ import ViewAnalysis from "./pages/Dashboard/ViewAnalysis";
 import PracticePage from "./pages/Dashboard/PracticePage";
 import LearningResources from "./pages/Dashboard/LearningResources";
 import Profile from "./pages/Dashboard/Profile";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -27,31 +28,55 @@ function App() {
         element={<LoginPage />}
       />
 
-      {/* Dashboard routes */}
+      {/* Protected Dashboard routes */}
       <Route path="/dashboard">
         <Route
           index
-          element={<DashboardHome />}
+          element={
+            <ProtectedRoute>
+              <DashboardHome />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="practice-area"
-          element={<PracticeArea />}
+          element={
+            <ProtectedRoute>
+              <PracticeArea />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="view-analysis"
-          element={<ViewAnalysis />}
+          element={
+            <ProtectedRoute>
+              <ViewAnalysis />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="practice-page"
-          element={<PracticePage />}
+          element={
+            <ProtectedRoute>
+              <PracticePage />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="learning-resources"
-          element={<LearningResources />}
+          element={
+            <ProtectedRoute>
+              <LearningResources />
+            </ProtectedRoute>
+          }
         />
         <Route
           path="profile"
-          element={<Profile />}
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
         />
       </Route>
     </Routes>

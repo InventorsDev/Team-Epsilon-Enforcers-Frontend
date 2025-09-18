@@ -46,7 +46,7 @@ export default function LoginPage() {
         return;
       }
       if (data.session) {
-        navigate("/");
+        navigate("/dashboard");
       }
     } catch (err) {
       setErrorMessage(formatAuthError((err as Error).message));
@@ -62,7 +62,7 @@ export default function LoginPage() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/`,
+          redirectTo: `${window.location.origin}/dashboard`,
         },
       });
       if (error) {

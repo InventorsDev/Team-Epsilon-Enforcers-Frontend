@@ -1,9 +1,32 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
-import { Mic } from "lucide-react";
 import logo from "../assets/logo.png";
+import { useAuth } from "@/context/AuthContext";
+import { useState } from "react";
 
 const NavBar = () => {
+  const { user, supabase } = useAuth();
+  const navigate = useNavigate();
+  const [isSigningOut, setIsSigningOut] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const handleSignOut = async () => {
+    setErrorMessage(null);
+    setIsSigningOut(true);
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) {
+        setErrorMessage(error.message);
+        return;
+      }
+      navigate("/login");
+    } catch (err) {
+      setErrorMessage((err as Error).message);
+    } finally {
+      setIsSigningOut(false);
+    }
+  };
+
   return (
     <>
       {/* Navigation Header */}
@@ -92,10 +115,38 @@ const NavBar = () => {
                 </NavLink>
               </nav>
             </div>
-            <Button className="bg-blue-600 hover:bg-blue-700">Sign Out</Button>
+            {user ? (
+              <Button
+                onClick={handleSignOut}
+                disabled={isSigningOut}
+                className="bg-blue-600 hover:bg-blue-700 flex items-center gap-2 disabled:opacity-60"
+              >
+                {isSigningOut && (
+                  <span
+                    className="inline-block h-4 w-4 rounded-full border-2 border-white border-t-transparent animate-spin"
+                    aria-hidden="true"
+                  />
+                )}
+                {isSigningOut ? "Signing out..." : "Sign Out"}
+              </Button>
+            ) : (
+              <div className="flex items-center gap-3">
+                <Link to="/login">
+                  <Button variant="outline" className="border-border">Log In</Button>
+                </Link>
+                <Link to="/signup">
+                  <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </header>
+      {errorMessage && (
+        <div className="px-4 py-2 text-sm text-red-700 bg-red-50 border-t border-red-200">
+          {errorMessage}
+        </div>
+      )}
     </>
   );
 };

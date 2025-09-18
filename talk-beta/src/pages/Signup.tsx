@@ -28,7 +28,7 @@ export default function SignUp() {
     ) {
       return "Email already registered";
     }
-    
+
     return message;
   const navigate = useNavigate()
 
@@ -69,7 +69,7 @@ export default function SignUp() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/`,
+          redirectTo: `${window.location.origin}/dashboard`,
         },
       });
       if (error) {
@@ -98,7 +98,7 @@ export default function SignUp() {
           Sign Up to get Started
         </h1>
         <p className="text-[#616161] text-sm text-left">
-          Create an account to unlock tools for confidet speaking
+          Create an account to unlock tools for confident speaking
         </p>
       </div>
 
@@ -170,7 +170,10 @@ export default function SignUp() {
           className="w-full h-12 rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground font-semibold disabled:opacity-60 flex items-center justify-center gap-2"
         >
           {isSubmittingEmail && (
-            <span className="inline-block h-4 w-4 rounded-full border-2 border-primary-foreground border-t-transparent animate-spin" aria-hidden="true" />
+            <span
+              className="inline-block h-4 w-4 rounded-full border-2 border-primary-foreground border-t-transparent animate-spin"
+              aria-hidden="true"
+            />
           )}
           {isSubmittingEmail ? "Signing up..." : "Sign Up"}
         </Button>
@@ -215,9 +218,14 @@ export default function SignUp() {
             </svg>
           )}
           {isSubmittingGoogle && (
-            <span className="inline-block h-4 w-4 rounded-full border-2 border-muted-foreground border-t-transparent animate-spin mr-2" aria-hidden="true" />
+            <span
+              className="inline-block h-4 w-4 rounded-full border-2 border-muted-foreground border-t-transparent animate-spin mr-2"
+              aria-hidden="true"
+            />
           )}
-          {isSubmittingGoogle ? "Connecting to Google..." : "Sign up with Google"}
+          {isSubmittingGoogle
+            ? "Connecting to Google..."
+            : "Sign up with Google"}
         </Button>
 
         {errorMessage && (
