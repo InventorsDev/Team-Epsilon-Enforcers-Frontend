@@ -2,8 +2,10 @@ import NavBar from "@/components/navBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mic, Book, BarChart3 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function DashboardHome() {
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen">
@@ -40,7 +42,7 @@ export default function DashboardHome() {
               <p className="text-gray-600 mb-8 leading-relaxed">
                 Start a fresh session and get real-time feedback on your speech.
               </p>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 rounded-lg font-medium">
+              <Button onClick={()=>{navigate("practice-area");}} className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 rounded-lg font-medium">
                 New Practice Session
               </Button>
             </CardContent>
@@ -59,7 +61,7 @@ export default function DashboardHome() {
                 Discover a variety of interactive exercises and speaking
                 scenarios.
               </p>
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 rounded-lg font-medium">
+              <Button onClick={()=>{navigate("practice-page");}} className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 rounded-lg font-medium">
                 Explore Exercises
               </Button>
             </CardContent>

@@ -30,6 +30,12 @@ export default function SignUp() {
     }
     
     return message;
+  const navigate = useNavigate()
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); // Handle login logic here
+    console.log("Login attempt:", { email, password, rememberMe });
+    navigate('/dashboard')
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
