@@ -1,18 +1,3 @@
-// export default function Profile() {
-//   return (
-//     <div className="min-h-screen overflow-hidden">
-//       {/* Header Navigation */}
-//       <NavBar />
-
-//       <main className="w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
-//         Profile Page
-//       </main>
-//     </div>
-//   );
-// }
-
-"use client";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -35,10 +20,10 @@ export default function Profile() {
   const [learningGoal, setLearningGoal] = useState("improve-fluency");
 
   return (
-    <div className="min-h-screen  bg-gray-50">
+    <div className="min-h-screen  bg-gray-50 overflow-hidden">
       <NavBar />
       {/* Main Content */}
-      <main className="w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Profile</h1>
 
         {/* Profile Information Card */}
@@ -75,11 +60,7 @@ export default function Profile() {
             <div className="grid grid-cols-1 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
-                <Input
-                  id="name"
-                  defaultValue="Jane Doe"
-                  className="max-w-md"
-                />
+                <Input id="name" defaultValue="Jane Doe" className="max-w-md" />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email Address</Label>
@@ -103,7 +84,7 @@ export default function Profile() {
         </Card>
 
         {/* Application Preferences Card */}
-        <Card>
+        <Card >
           <CardHeader>
             <CardTitle className="text-xl font-semibold">
               Application Preferences
@@ -120,10 +101,7 @@ export default function Profile() {
               </h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Label
-                    htmlFor="email-notifications"
-                    className="text-base"
-                  >
+                  <Label htmlFor="email-notifications" className="text-base">
                     Email Notifications
                   </Label>
                   <Switch
@@ -133,10 +111,7 @@ export default function Profile() {
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <Label
-                    htmlFor="in-app-notifications"
-                    className="text-base"
-                  >
+                  <Label htmlFor="in-app-notifications" className="text-base">
                     In-App Notifications
                   </Label>
                   <Switch
@@ -212,6 +187,18 @@ export default function Profile() {
                 Save Changes
               </Button>
             </div>
+          </CardContent>
+        </Card>
+
+        <Card className="mb-8 invisible">
+          <CardContent className="space-y-4">
+            <p className="text-gray-600 leading-relaxed">
+              This is an example transcript of your speech. As you speak, the AI
+              analyzes your delivery and provides real-time feedback. You can
+              see how certain words or phrases are highlighted to indicate areas
+              for improvement, such as filler words or pacing issues.
+            </p>
+
           </CardContent>
         </Card>
       </main>
