@@ -3,12 +3,23 @@ import NavBar from "@/components/navBar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+import { useLocation } from "react-router-dom";
+
 export default function ViewAnalysis() {
+  const location = useLocation();
+  let analysisResult = location?.state?.analysis;
+  if (!analysisResult) {
+    const stored = localStorage.getItem("analysis_result");
+    if (stored) {
+      analysisResult = JSON.parse(stored);
+    }
+  }
+  console.log(location?.state?.analysis);
   return (
     <div className="min-h-screen bg-gray-50">
       <NavBar />
       {/* Main Content */}
-      <div className="w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-white">
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
@@ -92,7 +103,9 @@ export default function ViewAnalysis() {
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl font-bold text-blue-600">85%</span>
+                  <span className="text-2xl font-bold text-blue-600">
+                    {analysisResult?.scores?.fluency ?? 85}%
+                  </span>
                   <svg
                     className="w-5 h-5 text-blue-600"
                     fill="currentColor"
@@ -124,7 +137,9 @@ export default function ViewAnalysis() {
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl font-bold text-blue-600">78%</span>
+                  <span className="text-2xl font-bold text-blue-600">
+                    {analysisResult?.scores?.pronunciation ?? 78}%
+                  </span>
                   <svg
                     className="w-5 h-5 text-blue-600"
                     fill="currentColor"
@@ -157,7 +172,7 @@ export default function ViewAnalysis() {
                 </div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl font-bold text-blue-600">
-                    2 Words
+                    {analysisResult?.scores?.filler_words || 2} Words
                   </span>
                   <svg
                     className="w-5 h-5 text-blue-600"
@@ -191,7 +206,7 @@ export default function ViewAnalysis() {
                 </div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-2xl font-bold text-blue-600">
-                    120 WPM
+                    {analysisResult?.scores?.pacing ?? 120} WPM
                   </span>
                   <svg
                     className="w-5 h-5 text-blue-600"
@@ -222,7 +237,13 @@ export default function ViewAnalysis() {
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl font-bold text-blue-600">8/10</span>
+                  <span className="text-2xl font-bold text-blue-600">
+                    {" "}
+                    {((analysisResult?.details?.confidence ?? 1) * 10).toFixed(
+                      1
+                    )}
+                    /10
+                  </span>
                   <svg
                     className="w-5 h-5 text-blue-600"
                     fill="currentColor"
@@ -254,7 +275,7 @@ export default function ViewAnalysis() {
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl font-bold text-blue-600">5%</span>
+                  <span className="text-2xl font-bold text-blue-600">{analysisResult?.details?.pauses ?? 5}%</span>
                   <svg
                     className="w-5 h-5 text-blue-600"
                     fill="currentColor"
@@ -288,7 +309,7 @@ export default function ViewAnalysis() {
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl font-bold text-blue-600">140</span>
+                  <span className="text-2xl font-bold text-blue-600">{analysisResult?.details?.wpm ?? 140}</span>
                   <svg
                     className="w-5 h-5 text-blue-600"
                     fill="currentColor"
@@ -320,7 +341,7 @@ export default function ViewAnalysis() {
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl font-bold text-blue-600">2%</span>
+                  <span className="text-2xl font-bold text-blue-600">{analysisResult?.details?.wer ?? 2}%</span>
                   <svg
                     className="w-5 h-5 text-blue-600"
                     fill="currentColor"
@@ -340,7 +361,7 @@ export default function ViewAnalysis() {
             </Card>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }

@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
-import SignUp from "./pages/SignUp";
 import DashboardHome from "./pages/Dashboard/DashboardHome";
 import PracticeArea from "./pages/Dashboard/PracticeArea";
 import ViewAnalysis from "./pages/Dashboard/ViewAnalysis";
@@ -10,6 +9,7 @@ import PracticePage from "./pages/Dashboard/PracticePage";
 import LearningResources from "./pages/Dashboard/LearningResources";
 import Profile from "./pages/Dashboard/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
+import SignUp from "./pages/Signup";
 
 function App() {
   return (

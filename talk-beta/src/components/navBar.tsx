@@ -1,6 +1,6 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
-import logo from "../assets/logo.png";
+import frame from "../assets/Frame.svg";
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
 
@@ -37,14 +37,10 @@ const NavBar = () => {
               {/* <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
                   <Mic className="w-3 h-3 text-primary-foreground" />
                 </div> */}
-              <img
-                src={logo}
-                alt="logo"
-                className="w-16"
-              />
+              <img src={frame} alt="logo" className="h-5" />
 
               <span
-                className="text-lg font-extrabold text-blue-600 -ml-8"
+                className="text-lg font-extrabold text-blue-600 "
                 style={{ fontFamily: "Borel, cursive" }}
               >
                 Talk Beta
@@ -132,10 +128,14 @@ const NavBar = () => {
             ) : (
               <div className="flex items-center gap-3">
                 <Link to="/login">
-                  <Button variant="outline" className="border-border">Log In</Button>
+                  <Button variant="outline" className="border-border">
+                    Log In
+                  </Button>
                 </Link>
                 <Link to="/signup">
-                  <Button className="bg-blue-600 hover:bg-blue-700">Sign Up</Button>
+                  <Button className="bg-blue-600 hover:bg-blue-700">
+                    Sign Up
+                  </Button>
                 </Link>
               </div>
             )}

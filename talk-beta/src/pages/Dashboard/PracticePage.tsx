@@ -120,7 +120,7 @@ export default function PracticePage() {
         </section>
 
         {/* Call to Action */}
-        <section className="text-center py-16 bg-white rounded-lg">
+        {/* <section className="text-center py-16 bg-white rounded-lg">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Ready to Speak Confidently?
           </h2>
@@ -130,7 +130,7 @@ export default function PracticePage() {
           >
             Explore All Exercises
           </Button>
-        </section>
+        </section> */}
       </main>
     </div>
   );

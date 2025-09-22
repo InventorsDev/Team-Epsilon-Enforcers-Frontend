@@ -26,7 +26,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": [], // Explicitly specify no extra type definitions
   },
   "include": ["src"]
 }
