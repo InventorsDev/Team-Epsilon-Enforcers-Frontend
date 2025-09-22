@@ -6,11 +6,7 @@ export function Header() {
   return (
     <header className="w-full px-6 py-8 flex items-center justify-between">
       <div className="flex items-center space-x-2">
-        <img
-          src={frame}
-          alt=""
-          className=""
-        />
+        <img src={frame} alt="" className="h-5" />
         <span
           className="text-lg font-extrabold text-blue-600"
           style={{ fontFamily: "Borel, cursive" }}
