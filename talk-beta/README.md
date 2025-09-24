@@ -3,7 +3,7 @@
 > Speech improvement app for AI-powered transcription and personalized speaking feedback
 
 <p align="center">
-  <img src="../talk-beta/src/assets/talk-beta-page.png" alt="TalkBeta Logo" width="120" />
+  <img src="../talk-beta/src/assets/talk-beta-page.png" alt="TalkBeta practice page" width="400" height="400/>
 </p>
 
 ### Description
