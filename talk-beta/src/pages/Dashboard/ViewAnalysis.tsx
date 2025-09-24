@@ -46,7 +46,7 @@ export default function ViewAnalysis() {
             </p>
 
             <div className="bg-gray-50 p-4 rounded-lg">
-              <p className="text-gray-800 leading-relaxed">
+              {/* <p className="text-gray-800 leading-relaxed">
                 "Hello,{" "}
                 <span className="bg-orange-200 px-1 rounded text-orange-800 font-medium">
                   um
@@ -60,17 +60,20 @@ export default function ViewAnalysis() {
                 </span>
                 , our intelligent system provides instant feedback to guide your
                 progress."
+              </p> */}
+              <p className="text-gray-800 leading-relaxed">
+                {analysisResult.transcript}
               </p>
             </div>
 
-            <p className="text-gray-600 leading-relaxed">
+            {/* <p className="text-gray-600 leading-relaxed">
               You can record your voice, get a detailed analysis, and then
               review your performance. We offer various exercises to practice
               different scenarios, from daily conversations to formal
               presentations. Remember, consistent practice is key. We are here
               to support your journey every step of the way. Thank you for
               choosing FluentAI.
-            </p>
+            </p> */}
 
             <div className="flex items-center gap-2 text-sm text-gray-600">
               <span>Highlighted words (e.g.,</span>
@@ -275,7 +278,9 @@ export default function ViewAnalysis() {
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl font-bold text-blue-600">{analysisResult?.details?.pauses ?? 5}%</span>
+                  <span className="text-2xl font-bold text-blue-600">
+                    {analysisResult?.details?.pauses ?? 5}%
+                  </span>
                   <svg
                     className="w-5 h-5 text-blue-600"
                     fill="currentColor"
@@ -309,7 +314,9 @@ export default function ViewAnalysis() {
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl font-bold text-blue-600">{analysisResult?.details?.wpm ?? 140}</span>
+                  <span className="text-2xl font-bold text-blue-600">
+                    {analysisResult?.details?.wpm ?? 140}
+                  </span>
                   <svg
                     className="w-5 h-5 text-blue-600"
                     fill="currentColor"
@@ -341,7 +348,9 @@ export default function ViewAnalysis() {
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl font-bold text-blue-600">{analysisResult?.details?.wer ?? 2}%</span>
+                  <span className="text-2xl font-bold text-blue-600">
+                    {analysisResult?.details?.wer ?? 2}%
+                  </span>
                   <svg
                     className="w-5 h-5 text-blue-600"
                     fill="currentColor"

@@ -1,69 +1,104 @@
-# React + TypeScript + Vite
+## TalkBeta
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Speech improvement app for AI-powered transcription and personalized speaking feedback
 
-Currently, two official plugins are available:
+<p align="center">
+  <img src="../talk-beta/src/assets/talk-beta-page.png" alt="TalkBeta Logo" width="120" />
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Description
+TalkBeta helps you practice and improve your speaking skills. Record or upload audio, get accurate AI transcriptions, and receive actionable feedback on pacing, fluency, confidence, filler words, words-per-minute (WPM), and word error rate (WER).
 
-## Expanding the ESLint configuration
+- **Who it’s for**: learners, professionals, public speakers, and teams who want measurable speaking improvement.
+- **What you get**: instant transcripts, clear metrics, and personalized insights so you can focus on what matters.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Features
+- **AI Transcription**: Fast, accurate speech-to-text for recordings and live sessions.
+- **Personalized Feedback**: Human-friendly summaries and suggestions on how to improve.
+- **Speech Metrics**:
+  - **Pacing & Fluency**: Identify pauses, stutters, and rhythm.
+  - **Confidence Score**: Measure delivery consistency.
+  - **Filler Words**: Track and reduce “um”, “uh”, and similar fillers.
+  - **WPM (Words per Minute)**: Monitor speaking speed trends.
+  - **WER (Word Error Rate)**: Gauge transcription accuracy and clarity.
+- **Session History**: Review past practice sessions and track progress over time.
+- **Privacy First**: Your recordings are processed securely; see privacy notes below.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Tech Stack
+- **Frontend**: React, TypeScript, Vite, Tailwind CSS, shadcn/ui
+- **Audio**: Web Audio API, MediaRecorder API
+- **Backend (reference)**: FastAPI (Python), Uvicorn, Pydantic
+- **Speech/AI (reference)**: Whisper/Faster-Whisper or cloud STT provider; OpenAI/LLM for feedback
+- **Tooling**: ESLint, Prettier, Vitest/Playwright (optional), Docker (optional)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+> Note: This repository is the frontend. A reference backend can be implemented with FastAPI (see Backend section). If you already have an API, configure environment variables accordingly.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Installation Guide
+
+#### Prerequisites
+- Node.js ≥ 18 and npm or pnpm
+- Python ≥ 3.11 (for the reference backend)
+- ffmpeg installed and on PATH (recommended for audio processing)
+- Git
+
+#### Clone the repository
+```bash
+git clone https://github.com/InventorsDev/Team-Epsilon-Enforcers-Frontend.git
+cd talkbeta
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+#### Frontend setup
+```bash
+# From the repository root
+npm install        # or: pnpm install / yarn install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+# Create environment file
+cp .env.example .env   # create and fill values; see variables below
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start the dev server
+npm run dev
 ```
+The frontend dev server runs at `http://localhost:5173` by default.
+
+##### Frontend environment variables
+Create a `.env` file in the project root with values appropriate to your environment:
+```bash
+
+# Analytics / optional
+VITE_POSTHOG_KEY=
+VITE_SENTRY_DSN=
+```
+
+
+### Screenshots / Demo
+- Add screenshots to `docs/screenshots/` and reference them here:
+
+
+### Contributing
+We welcome contributions! To get started:
+1. Fork the repository and create your feature branch: `git checkout -b feat/amazing-feature`
+2. Install dependencies and run the app locally.
+3. Follow the existing code style (ESLint/Prettier). Add tests where meaningful.
+4. Commit using clear, conventional messages (e.g., `feat: add WPM trend chart`).
+5. Open a Pull Request describing your changes and link any related issues.
+
+For larger changes, please open an issue first to discuss the proposal.
+
+### License
+This project is licensed under the **MIT License**. See `LICENSE` for details.
+
+### Acknowledgments
+- React, TypeScript, Vite, Tailwind CSS, shadcn/ui
+- FastAPI, Pydantic, Uvicorn
+- Whisper / Faster-Whisper or cloud STT providers
+- OpenAI (LLM feedback prompts), Web Audio API, MediaRecorder API
+- All contributors and the open-source community
+
+---
+
+#### Privacy & Security Notes
+- Audio is processed for transcription and feedback. Configure retention policies and storage according to your needs.
+- Do not commit secrets. Use environment variables or a secret manager.
+
+#### Roadmap (examples)
+- Real-time transcription, multilingual support, classroom/team dashboards, and exportable reports.
