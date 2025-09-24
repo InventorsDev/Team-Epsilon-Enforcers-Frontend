@@ -197,11 +197,16 @@ const PracticeArea = () => {
           console.error("Failed to parse auth token from localStorage", e);
         }
       }
-      const response = await fetch("https://team-epsilon-enforcers-backend.onrender.com/recordings/submit-and-analyze", {
-        method: "POST",
-        body: formData,
-        headers: accessToken ? { Authorization: `Bearer ${accessToken}` } : {},
-      });
+      const response = await fetch(
+        "https://team-epsilon-enforcers-backend.onrender.com/recordings/submit-and-analyze",
+        {
+          method: "POST",
+          body: formData,
+          headers: accessToken
+            ? { Authorization: `Bearer ${accessToken}` }
+            : {},
+        }
+      );
       const result = await response.json();
       console.log("Upload result:", result);
       localStorage.setItem("analysis_result", JSON.stringify(result));
