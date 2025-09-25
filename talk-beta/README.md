@@ -7,9 +7,9 @@
 </p>
 
 ### Description
-TalkBeta helps you practice and improve your speaking skills. Record or upload audio, get accurate AI transcriptions, and receive actionable feedback on pacing, fluency, confidence, filler words, words-per-minute (WPM), and word error rate (WER).
+TalkBeta helps you practice and improve your speaking skills. Record or upload audio, get accurate AI transcriptions, and receive actionable feedback on pacing, fluency, pronunciation, pauses, confidence, filler words, words-per-minute (WPM), and word error rate (WER).
 
-- **Who it’s for**: learners, professionals, public speakers, and teams who want measurable speaking improvement.
+- **Who it’s for**: learners, creators, professionals, public speakers, students and teams who want measurable speaking improvement.
 - **What you get**: instant transcripts, clear metrics, and personalized insights so you can focus on what matters.
 
 ### Features
@@ -21,15 +21,14 @@ TalkBeta helps you practice and improve your speaking skills. Record or upload a
   - **Filler Words**: Track and reduce “um”, “uh”, and similar fillers.
   - **WPM (Words per Minute)**: Monitor speaking speed trends.
   - **WER (Word Error Rate)**: Gauge transcription accuracy and clarity.
-- **Session History**: Review past practice sessions and track progress over time.
 - **Privacy First**: Your recordings are processed securely; see privacy notes below.
 
 ### Tech Stack
 - **Frontend**: React, TypeScript, Vite, Tailwind CSS, shadcn/ui
 - **Audio**: Web Audio API, MediaRecorder API
 - **Backend (reference)**: FastAPI (Python), Uvicorn, Pydantic
-- **Speech/AI (reference)**: Whisper/Faster-Whisper or cloud STT provider; OpenAI/LLM for feedback
-- **Tooling**: ESLint, Prettier, Vitest/Playwright (optional), Docker (optional)
+- **Speech/AI (reference)**: Assembly AI for transcription; Custom functions for feedback
+- **Tooling**: ESLint, Prettier, Docker
 
 > Note: This repository is the frontend. A reference backend can be implemented with FastAPI (see Backend section). If you already have an API, configure environment variables accordingly.
 
@@ -70,8 +69,8 @@ VITE_SENTRY_DSN=
 ```
 
 
-### Screenshots / Demo
-- Add screenshots to `docs/screenshots/` and reference them here:
+### Demo Video
+- Add video link to `docs/screenshots/` and reference them here:
 
 
 ### Contributing
@@ -90,8 +89,8 @@ This project is licensed under the **MIT License**. See `LICENSE` for details.
 ### Acknowledgments
 - React, TypeScript, Vite, Tailwind CSS, shadcn/ui
 - FastAPI, Pydantic, Uvicorn
-- Whisper / Faster-Whisper or cloud STT providers
-- OpenAI (LLM feedback prompts), Web Audio API, MediaRecorder API
+- Assembly AI 
+- Web Audio API, MediaRecorder API
 - All contributors and the open-source community
 
 ---
