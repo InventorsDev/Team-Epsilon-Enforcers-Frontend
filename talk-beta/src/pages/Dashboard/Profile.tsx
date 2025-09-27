@@ -9,28 +9,26 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Switch } from "@/components/ui/switch";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import ProfileImage from "@/assets/profile.png";
 import NavBar from "@/components/navBar";
 import { supabase } from "../../supabaseClient"; // Adjust path if needed
 import { toast } from "sonner";
 
 export default function Profile() {
-  const [emailNotifications, setEmailNotifications] = useState(true);
-  const [inAppNotifications, setInAppNotifications] = useState(false);
-  const [learningGoal, setLearningGoal] = useState("improve-fluency");
+  // const [emailNotifications, setEmailNotifications] = useState(true);
+  // const [inAppNotifications, setInAppNotifications] = useState(false);
+  // const [learningGoal, setLearningGoal] = useState("improve-fluency");
   const [userEmail, setUserEmail] = useState<string>("");
   const [emailError, setEmailError] = useState<string | null>(null);
 
   const [username, setUsername] = useState<string>("Jane Doe");
   const [profileImage, setProfileImage] = useState<string>(ProfileImage);
-  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
+  const [_selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
 
   // UI state for saving
   const [isSaving, setIsSaving] = useState(false);
-  const [saveSuccess, setSaveSuccess] = useState<string | null>(null);
-  const [saveError, setSaveError] = useState<string | null>(null);
+  const [_saveSuccess, setSaveSuccess] = useState<string | null>(null);
+  const [_saveError, setSaveError] = useState<string | null>(null);
 
   // For file input trigger
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -82,25 +80,25 @@ export default function Profile() {
   };
 
   // Upload image to Supabase Storage and get public URL
-  const uploadProfileImage = async (file: File): Promise<string | null> => {
-    const user = await supabase.auth.getUser();
-    const userId = user.data.user?.id;
-    if (!userId) return null;
+  // const uploadProfileImage = async (file: File): Promise<string | null> => {
+  //   const user = await supabase.auth.getUser();
+  //   const userId = user.data.user?.id;
+  //   if (!userId) return null;
 
-    const fileExt = file.name.split(".").pop();
-    const filePath = `avatars/${userId}.${fileExt}`;
+  //   const fileExt = file.name.split(".").pop();
+  //   const filePath = `avatars/${userId}.${fileExt}`;
 
-    // Upload to 'avatars' bucket
-    const { error } = await supabase.storage
-      .from("avatars")
-      .upload(filePath, file, { upsert: true });
+  //   // Upload to 'avatars' bucket
+  //   const { error } = await supabase.storage
+  //     .from("avatars")
+  //     .upload(filePath, file, { upsert: true });
 
-    if (error) return null;
+  //   if (error) return null;
 
-    // Get public URL
-    const { data } = supabase.storage.from("avatars").getPublicUrl(filePath);
-    return data?.publicUrl ?? null;
-  };
+  //   // Get public URL
+  //   const { data } = supabase.storage.from("avatars").getPublicUrl(filePath);
+  //   return data?.publicUrl ?? null;
+  // };
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,16 +106,16 @@ export default function Profile() {
     setSaveSuccess(null);
     setSaveError(null);
 
-    let imageUrl = profileImage;
-    if (selectedImageFile) {
-      const uploadedUrl = await uploadProfileImage(selectedImageFile);
-      if (!uploadedUrl) {
-        setSaveError("Failed to upload profile image.");
-        setIsSaving(false);
-        return;
-      }
-      imageUrl = uploadedUrl;
-    }
+    // let imageUrl = profileImage;
+    // if (selectedImageFile) {
+    //   const uploadedUrl = await uploadProfileImage(selectedImageFile);
+    //   if (!uploadedUrl) {
+    //     setSaveError("Failed to upload profile image.");
+    //     setIsSaving(false);
+    //     return;
+    //   }
+    //   imageUrl = uploadedUrl;
+    // }
 
     const {
       data: { session },

@@ -7,11 +7,7 @@ import { Mic, Square, Upload, Play, Pause } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-function formatTime(seconds: number) {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
+
 
 const PracticeArea = () => {
   // Animated bars state for recording
