@@ -14,6 +14,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import ProfileImage from "@/assets/profile.png";
 import NavBar from "@/components/navBar";
 import { supabase } from "../../supabaseClient"; // Adjust path if needed
+import { toast } from "sonner";
 
 export default function Profile() {
   const [emailNotifications, setEmailNotifications] = useState(true);
@@ -139,7 +140,7 @@ export default function Profile() {
           },
           body: JSON.stringify({
             username,
-            profileImage: imageUrl,
+            // profileImage: imageUrl,
           }),
         }
       );
@@ -147,8 +148,10 @@ export default function Profile() {
         throw new Error("Failed to update profile.");
       }
       setSaveSuccess("Profile updated successfully!");
+      toast.success("Profile updated successfully!");
     } catch (err: any) {
       setSaveError(err.message || "An error occurred.");
+      toast.error(err.message || "An error occurred.");
     } finally {
       setIsSaving(false);
     }
@@ -269,127 +272,19 @@ export default function Profile() {
                   Save Changes
                 </Button>
               </div>
-              {saveSuccess && (
+              {/* {saveSuccess && (
                 <p className="text-green-600 text-sm mt-2">{saveSuccess}</p>
               )}
               {saveError && (
                 <p className="text-red-600 text-sm mt-2">{saveError}</p>
-              )}
+              )} */}
             </form>
           </CardContent>
         </Card>
+
+        
         {/* Application Preferences Card */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold">
-              Application Preferences
-            </CardTitle>
-            <CardDescription>
-              Customize your learning experience and notification settings.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-8">
-            {/* Notification Preferences */}
-            <div>
-              <h3 className="text-lg font-medium mb-4">
-                Notification Preferences
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <Label
-                    htmlFor="email-notifications"
-                    className="text-base"
-                  >
-                    Email Notifications
-                  </Label>
-                  <Switch
-                    id="email-notifications"
-                    checked={emailNotifications}
-                    onCheckedChange={setEmailNotifications}
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <Label
-                    htmlFor="in-app-notifications"
-                    className="text-base"
-                  >
-                    In-App Notifications
-                  </Label>
-                  <Switch
-                    id="in-app-notifications"
-                    checked={inAppNotifications}
-                    onCheckedChange={setInAppNotifications}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Learning Goal Focus */}
-            <div>
-              <h3 className="text-lg font-medium mb-4">Learning Goal Focus</h3>
-              <RadioGroup
-                value={learningGoal}
-                onValueChange={setLearningGoal}
-                className="grid grid-cols-1 md:grid-cols-2 gap-4"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="improve-fluency"
-                    id="improve-fluency"
-                  />
-                  <Label htmlFor="improve-fluency">Improve Fluency</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="refine-pronunciation"
-                    id="refine-pronunciation"
-                  />
-                  <Label htmlFor="refine-pronunciation">
-                    Refine Pronunciation
-                  </Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="master-rhetoric"
-                    id="master-rhetoric"
-                  />
-                  <Label htmlFor="master-rhetoric">Master Rhetoric</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="optimize-pacing"
-                    id="optimize-pacing"
-                  />
-                  <Label htmlFor="optimize-pacing">Optimize Pacing</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="boost-confidence"
-                    id="boost-confidence"
-                  />
-                  <Label htmlFor="boost-confidence">Boost Confidence</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="everyday-communication"
-                    id="everyday-communication"
-                  />
-                  <Label htmlFor="everyday-communication">
-                    Everyday Communication
-                  </Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex justify-end space-x-3 pt-4">
-              <Button variant="outline">Cancel</Button>
-              <Button className="bg-blue-600 hover:bg-blue-700">
-                Save Changes
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+        
         <Card className="mb-8 invisible">
           <CardContent className="space-y-4">
             <p className="text-gray-600 leading-relaxed">
