@@ -15,6 +15,7 @@ export default function ViewAnalysis() {
     }
   }
   console.log(location?.state?.analysis);
+  const fillerWords:any[] = analysisResult?.details?.filler_words_details?.words
   return (
     <div className="min-h-screen bg-gray-50">
       <NavBar />
@@ -61,19 +62,30 @@ export default function ViewAnalysis() {
                 , our intelligent system provides instant feedback to guide your
                 progress."
               </p> */}
-              <p className="text-gray-800 leading-relaxed">
-                {analysisResult.transcript}
-              </p>
+              {analysisResult?.transcript ? (
+                <p className="text-gray-800 leading-relaxed">
+                  {analysisResult.transcript.split(" ").map((word: string, idx: number) => {
+                    const isFiller = fillerWords?.includes(word.replace(/[.,!?]/g, ""));
+                    return (
+                      <span
+                        key={idx}
+                        className={
+                          isFiller
+                            ? "bg-orange-200 px-1 rounded text-orange-800 font-medium text-xs"
+                            : ""
+                        }
+                      >
+                        {word}
+                      </span>
+                    );
+                  }).reduce((prev:any, curr:any) => [prev, " ", curr])}
+                </p>
+              ) : (
+                <p className="text-gray-800 leading-relaxed">
+                  "Hello, <span className='bg-red-200 px-1 rounded text-red-800 font-medium'>um</span>, welcome to Talk Beta. This platform is designed to help you improve your public speaking skills and build confidence. We focus on key areas like pronunciation, pacing, and overall fluency. <span className='bg-red-200 px-1 rounded text-red-800 font-medium'>Uh</span>, our intelligent system provides instant feedback to guide your progress."
+                </p>
+              )}
             </div>
-
-            {/* <p className="text-gray-600 leading-relaxed">
-              You can record your voice, get a detailed analysis, and then
-              review your performance. We offer various exercises to practice
-              different scenarios, from daily conversations to formal
-              presentations. Remember, consistent practice is key. We are here
-              to support your journey every step of the way. Thank you for
-              choosing FluentAI.
-            </p> */}
 
             <div className="flex items-center gap-2 text-sm text-gray-600">
               <span>Highlighted words (e.g.,</span>

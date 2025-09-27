@@ -22,7 +22,6 @@ export default function Profile() {
   const [userEmail, setUserEmail] = useState<string>("");
   const [emailError, setEmailError] = useState<string | null>(null);
 
-  // New state for username and profile image
   const [username, setUsername] = useState<string>("Jane Doe");
   const [profileImage, setProfileImage] = useState<string>(ProfileImage);
   const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
