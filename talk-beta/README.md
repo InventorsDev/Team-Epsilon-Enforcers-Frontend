@@ -13,8 +13,8 @@ TalkBeta helps you practice and improve your speaking skills. Record or upload a
 - **What you get**: instant transcripts, clear metrics, and personalized insights so you can focus on what matters.
 
 ### Features
-- **AI Transcription**: Fast, accurate speech-to-text for recordings and live sessions.
-- **Personalized Feedback**: Human-friendly summaries and suggestions on how to improve.
+- **Human Level Transcription**: Fast, accurate speech-to-text for recordings and live sessions.
+- **Personalized Delivery Feedback**: Human-friendly summaries and suggestions on how to improve.
 - **Speech Metrics**:
   - **Pacing & Fluency**: Identify pauses, stutters, and rhythm.
   - **Confidence Score**: Measure delivery consistency.
