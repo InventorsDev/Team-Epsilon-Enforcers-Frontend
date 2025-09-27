@@ -21,7 +21,7 @@ export default function PracticePage() {
     {
       title: "Monologue Drill",
       prompt:
-        "Try reading this tongue twister aloud: 'She sells seashells by the seashore.'",
+        "Curiosity is a spark. It begins quietly, like a question whispered inside the mind: What if? Why not? How does this work? And from that spark, entire worlds can ignite. Every discovery, every invention, every breakthrough began with someone refusing to silence that inner voice. Yet curiosity is fragile. In childhood, it flows freely, unafraid of mistakes. As adults, however, we often bury it under schedules, rules, and the fear of being wrong. But what if we treated curiosity as a daily practice, as vital as eating or breathing? What if, instead of closing conversations with certainty, we opened them with wonder? Fluency in speech is like fluency in thought—the more curious you are, the more your words expand, adapt, and connect. When you speak with curiosity, your voice carries possibility. And possibility is magnetic. It pulls people closer, it invites them to listen, and it gives your ideas wings. So the next time you speak, let curiosity guide your tone. Ask aloud, even if you already know the answer. Invite others into your wonder. Because fluent speech is not only about how you sound—it is about how deeply you make others feel that the journey of your words is worth following.",
       image: TongueTwisters,
       badges: ["Lesson", "Beginner"],
       description:
@@ -30,7 +30,7 @@ export default function PracticePage() {
     },
     {
       title: "Argument Practice",
-      prompt: "Role-play a debate: 'Why is public speaking important?'",
+      prompt: "There is a growing debate in the world today: should technology continue racing forward at lightning speed, or should we pause, reflect, and slow it down? On one hand, innovation has lifted millions out of poverty, cured diseases, and connected humanity in ways unimaginable just a century ago. Faster progress means more solutions, more efficiency, and more opportunities to solve problems that once seemed permanent. On the other hand, unchecked speed can be dangerous. Artificial intelligence, genetic engineering, and powerful new weapons raise questions we are not yet prepared to answer. Should we build simply because we can, or should we consider whether we should? Too often, progress runs ahead while wisdom lags behind. So where does that leave us? The answer may not be to stop technology, but to balance it. To create guardrails that encourage innovation while protecting humanity. To demand responsibility alongside creativity. In the end, the real question is not whether technology should slow down—it is whether we can learn to keep our ethics, our laws, and our compassion moving just as fast.",
       image: RolePlays,
       badges: ["Lesson", "Beginner"],
       description:
@@ -40,7 +40,7 @@ export default function PracticePage() {
     {
       title: "Conversation Practice",
       prompt:
-        "Read this passage: 'The quick brown fox jumps over the lazy dog.'",
+        "Hey, have you ever noticed how some of the best conversations happen in coffee shops?” I asked, leaning back in my chair.'You mean the way strangers just… open up?” you replied.'Exactly. There’s something about the smell of coffee, the sound of cups clinking, and the low hum of chatter that makes people more honest. You sit across from someone, and suddenly you’re talking about dreams, fears, even crazy ideas you wouldn’t normally share.''Maybe it’s the environment. It feels safe, casual. Nobody’s rushing to judge.' 'True. And maybe that’s why I love it so much. Fluency isn’t just about polished speeches. It’s about being able to sit here, sip slowly, and let words tumble out naturally—without overthinking. Because sometimes the most powerful sentences aren’t rehearsed. They’re just spoken, simply, in the moment.",
       image: Reading,
       badges: ["Lesson", "Intermediate"],
       description:
@@ -104,8 +104,8 @@ export default function PracticePage() {
                     variant="default"
                     className="h-auto text-center w-full"
                     onClick={() =>
-                      navigate("/practice-area", {
-                        state: { prompt: lesson.prompt, title: lesson.title },
+                      navigate("/dashboard/practice-area", {
+                        state: { prompt: lesson.prompt},
                       })
                     }
                   >

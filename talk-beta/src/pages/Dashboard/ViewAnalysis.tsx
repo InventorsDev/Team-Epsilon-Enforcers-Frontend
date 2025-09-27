@@ -62,18 +62,9 @@ export default function ViewAnalysis() {
                 progress."
               </p> */}
               <p className="text-gray-800 leading-relaxed">
-                {analysisResult.transcript}
+                {analysisResult?.transcript ?? '"Hello, um, welcome to Talk Beta. This platform is designed to help you improve your public speaking skills and build confidence. We focus on key areas like pronunciation, pacing, and overall fluency. Uh, our intelligent system provides instant feedback to guide your progress."'}
               </p>
             </div>
-
-            {/* <p className="text-gray-600 leading-relaxed">
-              You can record your voice, get a detailed analysis, and then
-              review your performance. We offer various exercises to practice
-              different scenarios, from daily conversations to formal
-              presentations. Remember, consistent practice is key. We are here
-              to support your journey every step of the way. Thank you for
-              choosing FluentAI.
-            </p> */}
 
             <div className="flex items-center gap-2 text-sm text-gray-600">
               <span>Highlighted words (e.g.,</span>
