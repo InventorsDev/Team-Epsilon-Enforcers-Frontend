@@ -135,6 +135,7 @@ export default function LoginPage() {
           <div className="flex items-center space-x-2">
             <Checkbox
               className="border-border"
+              disabled
               id="remember"
               checked={rememberMe}
               onCheckedChange={(checked) => setRememberMe(checked as boolean)}
@@ -148,7 +149,8 @@ export default function LoginPage() {
           </div>
           <button
             type="button"
-            className="text-sm text-primary cursor-pointer hover:underline"
+            disabled
+            className={`text-sm text-primary cursor-pointer hover:underline  disabled:cursor-not-allowed`}
           >
             Forgot Password?
           </button>
