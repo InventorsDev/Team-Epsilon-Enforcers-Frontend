@@ -182,12 +182,14 @@ const PracticeArea = () => {
     try {
       setIsUploading(true);
       // Fetch the audio blob from the URL
-      const audioBlob = await fetch(audioUrl).then(res => res.blob());
+      const audioBlob = await fetch(audioUrl).then((res) => res.blob());
       const formData = new FormData();
       formData.append("prompt_text", practicePrompt);
       formData.append("file", audioBlob, "recording.webm");
 
-      const authData = localStorage.getItem("sb-kklpfqtpnunievubcjxy-auth-token");
+      const authData = localStorage.getItem(
+        "sb-kklpfqtpnunievubcjxy-auth-token"
+      );
       let accessToken = "";
       if (authData) {
         try {
@@ -213,12 +215,12 @@ const PracticeArea = () => {
       setAnalyzedResult(result);
       toast.success("Upload and Analysis Successful!");
       // navigate("/dashboard/view-analysis", { state: { analysis: result } });
-    } catch (err:any) {
+    } catch (err: any) {
       toast.error("Upload Failed: " + (err?.message || err));
     } finally {
       setIsUploading(false);
     }
-  }
+  };
 
   useEffect(() => {
     if (!audioRef.current) return;
@@ -255,7 +257,7 @@ const PracticeArea = () => {
       <NavBar />
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 pb-10">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-12 sm:py-16 lg:py-20">
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -265,7 +267,7 @@ const PracticeArea = () => {
         </div>
 
         {/* Two Panel Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10 mb-8">
           {/* Left Panel - Recording Controls */}
           <Card className="bg-white shadow-sm">
             <CardHeader>
@@ -275,7 +277,7 @@ const PracticeArea = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Recording Buttons */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Button
                   className="bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center space-x-2 py-3"
                   onClick={handleStartRecording}
@@ -299,12 +301,18 @@ const PracticeArea = () => {
                   disabled={!audioUrl}
                   onClick={handleUploadAudio}
                 >
-                  {isUploading ? (<span
-                    className="inline-block h-4 w-4 rounded-full border-2 border-black border-t-transparent animate-spin"
-                    aria-hidden="true"
-                  />):(<Upload className="w-4 h-4" />)}
-                  
-                  <span>{isUploading ? "Uploading Audio" : "Upload Audio"}</span>
+                  {isUploading ? (
+                    <span
+                      className="inline-block h-4 w-4 rounded-full border-2 border-black border-t-transparent animate-spin"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <Upload className="w-4 h-4" />
+                  )}
+
+                  <span>
+                    {isUploading ? "Uploading Audio" : "Upload Audio"}
+                  </span>
                 </Button>
                 <Button
                   variant="outline"
@@ -318,34 +326,29 @@ const PracticeArea = () => {
               </div>
 
               {/* Audio Waveform Visualization */}
-              <div className="bg-gradient-to-r from-blue-500 via-[#5E6795] to-orange-500 rounded p-4 h-32 flex items-center justify-center relative">
-                <div className="flex items-end space-x-1 h-28 w-full">
-                  {isRecording
-                    ? bars.map((height, i) => (
-                        <div
-                          key={i}
-                          className="bg-white rounded-full transition-all"
-                          style={{
-                            width: "4px",
-                            height: `${height}px`,
-                            opacity: 0.9,
-                          }}
-                        />
-                      ))
-                    : Array.from({ length: 70 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className="bg-white rounded-full transition-all duration-200"
-                          style={{
-                            width: "4px",
-                            height: `${Math.random() * 20 + 10}px`,
-                            opacity: 0.5,
-                          }}
-                        />
-                      ))}
+              {/* Audio Waveform Visualization */}
+              <div className="bg-gradient-to-r from-blue-500 via-[#5E6795] to-orange-500 rounded p-2 sm:p-4 h-32 flex items-center justify-center relative overflow-hidden">
+                <div className="flex items-end space-x-0.5 sm:space-x-1 w-full h-full">
+                  {(isRecording ? bars : Array.from({ length: 70 })).map(
+                    (height, i) => (
+                      <div
+                        key={i}
+                        className="bg-white rounded-full transition-all duration-200"
+                        style={{
+                          flex: `1 1 ${
+                            100 / (isRecording ? bars.length : 70)
+                          }%`, // responsive width
+                          height: `${
+                            isRecording ? height : Math.random() * 20 + 10
+                          }px`,
+                          opacity: isRecording ? 0.9 : 0.5,
+                        }}
+                      />
+                    )
+                  )}
                   {isRecording && (
-                    <span className="absolute left-4 top-4 flex items-center text-red-600 font-bold animate-pulse">
-                      <Mic className="w-4 h-4 mr-2" /> Recording...
+                    <span className="absolute left-2 top-2 flex items-center text-red-600 font-bold animate-pulse text-sm sm:text-base">
+                      <Mic className="w-4 h-4 mr-1" /> Recording...
                     </span>
                   )}
                 </div>
@@ -444,15 +447,22 @@ const PracticeArea = () => {
                 value={practicePrompt}
                 onChange={(e) => setPracticePrompt(e.target.value)}
                 placeholder={`Write or paste your practice prompt here...`}
-                className="min-h-[200px] text-gray-700 leading-relaxed resize-none"
+                className="min-h-[180px] sm:min-h-[200px] md:min-h-[220px] text-gray-700 leading-relaxed resize-none"
               />
             </CardContent>
           </Card>
         </div>
 
         {/* See Results Button */}
-        <div className="flex justify-end">
-          <Button onClick={()=>navigate("/dashboard/view-analysis", { state: { analysis: analyzedResult } })} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg flex items-center space-x-2">
+        <div className="flex flex-col sm:flex-row justify-end gap-3 sm:gap-0 mt-6">
+          <Button
+            onClick={() =>
+              navigate("/dashboard/view-analysis", {
+                state: { analysis: analyzedResult },
+              })
+            }
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-3 text-base sm:text-lg flex items-center justify-center space-x-2"
+          >
             <Mic className="w-5 h-5" />
             <span>See Results</span>
           </Button>
