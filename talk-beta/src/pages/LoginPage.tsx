@@ -49,7 +49,7 @@ export default function LoginPage() {
         return;
       }
       if (data.session) {
-        navigate("/dashboard");
+        navigate("/login");
       }
     } catch (err) {
       setErrorMessage(formatAuthError((err as Error).message));
@@ -65,7 +65,8 @@ export default function LoginPage() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/dashboard`,
+          // redirectTo: "https://talkbeta.netlify.app/dashboard",
+          redirectTo: `${window.location.origin}/dashboard/`,
         },
       });
       if (error) {

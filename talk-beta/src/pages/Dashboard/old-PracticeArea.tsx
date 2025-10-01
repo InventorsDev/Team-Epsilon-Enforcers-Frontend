@@ -216,7 +216,9 @@ const PracticeArea = () => {
       localStorage.setItem("analysis_result", JSON.stringify(result));
       setAnalyzedResult(result);
       toast.success("Upload and Analysis Successful!");
-      // navigate("/dashboard/view-analysis", { state: { analysis: result } });
+      setTimeout(() => {
+        navigate("/dashboard/view-analysis", { state: { analysis: analyzedResult } });
+      }, 2500);
     } catch (err:any) {
       toast.error("Upload Failed: " + (err?.message || err));
     } finally {
@@ -301,14 +303,10 @@ const PracticeArea = () => {
                   variant="outline"
                   className="flex items-center justify-center space-x-2 py-3 bg-transparent"
                   disabled={!audioUrl}
-                  onClick={handleUploadAudio}
+                  // onClick={handleUploadAudio}
                 >
-                  {isUploading ? (<span
-                    className="inline-block h-4 w-4 rounded-full border-2 border-black border-t-transparent animate-spin"
-                    aria-hidden="true"
-                  />):(<Upload className="w-4 h-4" />)}
-                  
-                  <span>{isUploading ? "Uploading Audio" : "Upload Audio"}</span>
+                  <Upload className="w-4 h-4" />
+                  <span>Upload Audio</span>
                 </Button>
                 <Button
                   variant="outline"
@@ -455,9 +453,29 @@ const PracticeArea = () => {
         </div>
 
         {/* See Results Button */}
-        <div className="flex justify-end">
-          <Button onClick={()=>navigate("/dashboard/view-analysis", { state: { analysis: analyzedResult } })} className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg flex items-center space-x-2">
-            <Mic className="w-5 h-5" />
+        <div className="flex gap-4 justify-end">
+          <Button
+            disabled={!audioUrl}
+            onClick={handleUploadAudio}
+            className="bg-green-600 hover:bg-green-700 cursor-pointer text-white px-8 py-3 flex items-center space-x-2"
+          >
+            {isUploading ? (
+              <span
+                className="inline-block h-4 w-4 rounded-full border-2 border-black border-t-transparent animate-spin"
+                aria-hidden="true"
+              />
+            ) : (
+              <Mic className="w-4 h-4" />
+            )}
+
+            <span>{isUploading ? "Processing Audio" : "Process Audio"}</span>
+          </Button>
+          <Button
+            onClick={()=>{navigate("/dashboard/view-analysis", { state: { analysis: analyzedResult } });}}
+            className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white px-8 py-3 flex items-center space-x-2"
+          >
+              <Mic className="w-4 h-4" />
+
             <span>See Results</span>
           </Button>
         </div>
@@ -465,5 +483,8 @@ const PracticeArea = () => {
     </div>
   );
 };
+
+
+
 
 export default PracticeArea;

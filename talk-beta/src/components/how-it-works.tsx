@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AImic from "../assets/ai-mic.jpg";
+import recordPrompt from "../assets/record-prompt.jpg";
 import cubeImage from "../assets/cube-image.jpg";
 import feedback from "../assets/feedback.jpg";
 
@@ -17,7 +18,7 @@ export function HowItWorksSection() {
           <div className="flex justify-center">
             <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg">
               <img
-                src={AImic}
+                src={recordPrompt}
                 alt="Professional microphone for voice recording"
                 width={320}
                 height={240}
