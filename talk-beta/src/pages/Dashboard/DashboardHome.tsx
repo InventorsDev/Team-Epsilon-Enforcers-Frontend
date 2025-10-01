@@ -15,8 +15,8 @@ let name = "";
 if (authData) {
   try {
     const parsed = JSON.parse(authData);
-    name = parsed?.user?.user_metadata?.full_name;
-    setUserName(name || "Alex");
+    name = parsed?.user?.user_metadata?.full_name || parsed?.user?.user_metadata.email.split('@')[0] || 'Alex';
+    setUserName(name);
   } catch (e) {
     console.error("Failed to parse the name from localStorage", e);
   }
@@ -33,14 +33,14 @@ if (authData) {
         {/* Welcome Section */}
         <div className="bg-blue-50 rounded-2xl p-12 text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Welcome back, {userName.split(' ')[1]}!
+            Welcome back, {userName.split(' ')[0]}!
           </h1>
           <p className="text-gray-600 text-lg mb-8">
             "The journey of a thousand miles begins with a single step."
           </p>
           <Button
             onClick={() => {
-              navigate("practice-area");
+              navigate("practice-page");
             }}
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium flex items-center gap-2 mx-auto"
           >

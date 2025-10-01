@@ -9,28 +9,26 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Switch } from "@/components/ui/switch";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import ProfileImage from "@/assets/profile.png";
 import NavBar from "@/components/navBar";
 import { supabase } from "../../supabaseClient"; // Adjust path if needed
+import { toast } from "sonner";
 
 export default function Profile() {
-  const [emailNotifications, setEmailNotifications] = useState(true);
-  const [inAppNotifications, setInAppNotifications] = useState(false);
-  const [learningGoal, setLearningGoal] = useState("improve-fluency");
+  // const [emailNotifications, setEmailNotifications] = useState(true);
+  // const [inAppNotifications, setInAppNotifications] = useState(false);
+  // const [learningGoal, setLearningGoal] = useState("improve-fluency");
   const [userEmail, setUserEmail] = useState<string>("");
   const [emailError, setEmailError] = useState<string | null>(null);
 
-  // New state for username and profile image
   const [username, setUsername] = useState<string>("Jane Doe");
   const [profileImage, setProfileImage] = useState<string>(ProfileImage);
-  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
+  const [_selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
 
   // UI state for saving
   const [isSaving, setIsSaving] = useState(false);
-  const [saveSuccess, setSaveSuccess] = useState<string | null>(null);
-  const [saveError, setSaveError] = useState<string | null>(null);
+  const [_saveSuccess, setSaveSuccess] = useState<string | null>(null);
+  const [_saveError, setSaveError] = useState<string | null>(null);
 
   // For file input trigger
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -82,25 +80,25 @@ export default function Profile() {
   };
 
   // Upload image to Supabase Storage and get public URL
-  const uploadProfileImage = async (file: File): Promise<string | null> => {
-    const user = await supabase.auth.getUser();
-    const userId = user.data.user?.id;
-    if (!userId) return null;
+  // const uploadProfileImage = async (file: File): Promise<string | null> => {
+  //   const user = await supabase.auth.getUser();
+  //   const userId = user.data.user?.id;
+  //   if (!userId) return null;
 
-    const fileExt = file.name.split(".").pop();
-    const filePath = `avatars/${userId}.${fileExt}`;
+  //   const fileExt = file.name.split(".").pop();
+  //   const filePath = `avatars/${userId}.${fileExt}`;
 
-    // Upload to 'avatars' bucket
-    const { error } = await supabase.storage
-      .from("avatars")
-      .upload(filePath, file, { upsert: true });
+  //   // Upload to 'avatars' bucket
+  //   const { error } = await supabase.storage
+  //     .from("avatars")
+  //     .upload(filePath, file, { upsert: true });
 
-    if (error) return null;
+  //   if (error) return null;
 
-    // Get public URL
-    const { data } = supabase.storage.from("avatars").getPublicUrl(filePath);
-    return data?.publicUrl ?? null;
-  };
+  //   // Get public URL
+  //   const { data } = supabase.storage.from("avatars").getPublicUrl(filePath);
+  //   return data?.publicUrl ?? null;
+  // };
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,16 +106,16 @@ export default function Profile() {
     setSaveSuccess(null);
     setSaveError(null);
 
-    let imageUrl = profileImage;
-    if (selectedImageFile) {
-      const uploadedUrl = await uploadProfileImage(selectedImageFile);
-      if (!uploadedUrl) {
-        setSaveError("Failed to upload profile image.");
-        setIsSaving(false);
-        return;
-      }
-      imageUrl = uploadedUrl;
-    }
+    // let imageUrl = profileImage;
+    // if (selectedImageFile) {
+    //   const uploadedUrl = await uploadProfileImage(selectedImageFile);
+    //   if (!uploadedUrl) {
+    //     setSaveError("Failed to upload profile image.");
+    //     setIsSaving(false);
+    //     return;
+    //   }
+    //   imageUrl = uploadedUrl;
+    // }
 
     const {
       data: { session },
@@ -140,7 +138,7 @@ export default function Profile() {
           },
           body: JSON.stringify({
             username,
-            profileImage: imageUrl,
+            // profileImage: imageUrl,
           }),
         }
       );
@@ -148,8 +146,10 @@ export default function Profile() {
         throw new Error("Failed to update profile.");
       }
       setSaveSuccess("Profile updated successfully!");
+      toast.success("Profile updated successfully!");
     } catch (err: any) {
       setSaveError(err.message || "An error occurred.");
+      toast.error(err.message || "An error occurred.");
     } finally {
       setIsSaving(false);
     }
@@ -270,127 +270,19 @@ export default function Profile() {
                   Save Changes
                 </Button>
               </div>
-              {saveSuccess && (
+              {/* {saveSuccess && (
                 <p className="text-green-600 text-sm mt-2">{saveSuccess}</p>
               )}
               {saveError && (
                 <p className="text-red-600 text-sm mt-2">{saveError}</p>
-              )}
+              )} */}
             </form>
           </CardContent>
         </Card>
+
+        
         {/* Application Preferences Card */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold">
-              Application Preferences
-            </CardTitle>
-            <CardDescription>
-              Customize your learning experience and notification settings.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-8">
-            {/* Notification Preferences */}
-            <div>
-              <h3 className="text-lg font-medium mb-4">
-                Notification Preferences
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <Label
-                    htmlFor="email-notifications"
-                    className="text-base"
-                  >
-                    Email Notifications
-                  </Label>
-                  <Switch
-                    id="email-notifications"
-                    checked={emailNotifications}
-                    onCheckedChange={setEmailNotifications}
-                  />
-                </div>
-                <div className="flex items-center justify-between">
-                  <Label
-                    htmlFor="in-app-notifications"
-                    className="text-base"
-                  >
-                    In-App Notifications
-                  </Label>
-                  <Switch
-                    id="in-app-notifications"
-                    checked={inAppNotifications}
-                    onCheckedChange={setInAppNotifications}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Learning Goal Focus */}
-            <div>
-              <h3 className="text-lg font-medium mb-4">Learning Goal Focus</h3>
-              <RadioGroup
-                value={learningGoal}
-                onValueChange={setLearningGoal}
-                className="grid grid-cols-1 md:grid-cols-2 gap-4"
-              >
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="improve-fluency"
-                    id="improve-fluency"
-                  />
-                  <Label htmlFor="improve-fluency">Improve Fluency</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="refine-pronunciation"
-                    id="refine-pronunciation"
-                  />
-                  <Label htmlFor="refine-pronunciation">
-                    Refine Pronunciation
-                  </Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="master-rhetoric"
-                    id="master-rhetoric"
-                  />
-                  <Label htmlFor="master-rhetoric">Master Rhetoric</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="optimize-pacing"
-                    id="optimize-pacing"
-                  />
-                  <Label htmlFor="optimize-pacing">Optimize Pacing</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="boost-confidence"
-                    id="boost-confidence"
-                  />
-                  <Label htmlFor="boost-confidence">Boost Confidence</Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <RadioGroupItem
-                    value="everyday-communication"
-                    id="everyday-communication"
-                  />
-                  <Label htmlFor="everyday-communication">
-                    Everyday Communication
-                  </Label>
-                </div>
-              </RadioGroup>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex justify-end space-x-3 pt-4">
-              <Button variant="outline">Cancel</Button>
-              <Button className="bg-blue-600 hover:bg-blue-700">
-                Save Changes
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+        
         <Card className="mb-8 invisible">
           <CardContent className="space-y-4">
             <p className="text-gray-600 leading-relaxed">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mic, SearchIcon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Mastering from "@/assets/Mastering Pronunciation of.png";

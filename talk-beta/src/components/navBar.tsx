@@ -57,6 +57,10 @@ const NavBar = () => {
               className="h-5"
             />
             <VisuallyHidden>
+        <div>
+          <div className="flex items-center justify-between h-16 ">
+            <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate("/dashboard")}>
+              <img src={frame} alt="logo" className="h-5" />
               <span
                 className="text-lg font-extrabold text-blue-600"
                 style={{ fontFamily: "Borel, cursive" }}
@@ -98,7 +102,7 @@ const NavBar = () => {
                     aria-hidden="true"
                   />
                 )}
-                {isSigningOut ? "Signing out..." : "Sign Out"}
+                {isSigningOut ? "Signing out" : "Sign Out"}
               </Button>
             ) : (
               <>

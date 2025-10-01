@@ -4,26 +4,30 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mic, Square, Upload, Play, Pause } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-function formatTime(seconds: number) {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
+
 
 const PracticeArea = () => {
   // Animated bars state for recording
   const [bars, setBars] = useState<number[]>(Array(70).fill(60));
+  const location = useLocation();
   const [isRecording, setIsRecording] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [practicePrompt, setPracticePrompt] = useState<string>(
-    `"Thank you for attending today. Public speaking is a crucial skill, often overlooked in our daily lives. Mastering it not only boosts your confidence but also enhances your ability to communicate effectively. Remember to articulate clearly, maintain eye contact, and vary your tone to keep your audience engaged. Practice regularly, and don't be afraid to make mistakes; they are part of the learning process. Vocal Ascent is here to support you every step of the way."`
+    localStorage.getItem("analysis_result")
+      ? JSON.parse(localStorage.getItem("analysis_result") as string).transcript
+      : `"Hello, um, welcome to Talk Beta. This platform is designed to help you improve your public speaking skills and build confidence. We focus on key areas like pronunciation, pacing, and overall fluency. Uh, our intelligent system provides instant feedback to guide your progress"`
   );
   const navigate = useNavigate();
   const [analyzedResult, setAnalyzedResult] = useState<any>(null);
+
+  useEffect(() => {
+    const defaultPrompt = location.state?.prompt || practicePrompt;
+    setPracticePrompt(defaultPrompt);
+  },[location.state]);
 
   useEffect(() => {
     function animateBars() {

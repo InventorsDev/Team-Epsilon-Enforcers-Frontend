@@ -13,8 +13,8 @@ TalkBeta helps you practice and improve your speaking skills. Record or upload a
 - **What you get**: instant transcripts, clear metrics, and personalized insights so you can focus on what matters.
 
 ### Features
-- **AI Transcription**: Fast, accurate speech-to-text for recordings and live sessions.
-- **Personalized Feedback**: Human-friendly summaries and suggestions on how to improve.
+- **Human Level Transcription**: Fast, accurate speech-to-text for recordings and live sessions.
+- **Personalized Delivery Feedback**: Human-friendly summaries and suggestions on how to improve.
 - **Speech Metrics**:
   - **Pacing & Fluency**: Identify pauses, stutters, and rhythm.
   - **Confidence Score**: Measure delivery consistency.
@@ -71,6 +71,14 @@ VITE_SENTRY_DSN=
 
 ### Demo Video
 - Add video link to `docs/screenshots/` and reference them here:
+
+
+### Project Documentation
+- [Business Logic Documentation](../docs/Business%20Logic%20Documentation%20–%20Talk%20Beta%20Rev%201.pdf)
+- [Functional Requirements Document](../docs/FUNCTIONAL%20REQUIREMENTS%20DOCUMENT%20.pdf)
+- [Product Marketing Documentation](../docs/Product%20Marketing%20Documentation%20–%20Talk%20Beta.pdf)
+- [Product Requirements Document](../docs/Product-Requirements-%20Document%20_Talk%20Beta.docx.pdf)
+
 
 
 ### Contributing

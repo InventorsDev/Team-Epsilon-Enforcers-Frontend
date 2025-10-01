@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Mic } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
+import frame from "../assets/Frame.svg";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -16,6 +17,7 @@ export default function SignUp() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [isSubmittingEmail, setIsSubmittingEmail] = useState(false);
   const [isSubmittingGoogle, setIsSubmittingGoogle] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { supabase } = useAuth();
 
@@ -81,31 +83,28 @@ export default function SignUp() {
     <div className="bg-[#FBFDFF] rounded-3xl p-8 shadow-sm border border-border w-[500px]">
       {/* Header with Logo */}
       <div className="mb-8">
-        <div className="flex items-center gap-2 mb-6">
-          <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-            <Mic className="w-3 h-3 text-primary-foreground" />
-          </div>
-          <span className="text-primary font-semibold text-sm">Talk Beta</span>
+        <div className="flex items-center justify-center space-x-2 mb-2">
+          <img src={frame} alt="logo" className="h-5" />
+          <span
+            className="text-lg font-extrabold text-blue-600 "
+            style={{ fontFamily: "Borel, cursive" }}
+          >
+            Talk Beta
+          </span>
         </div>
 
-        <h1 className="text-2xl text-left font-bold text-[#001F54] mb-2 text-balance">
+        <h1 className="text-2xl font-bold text-center text-[#001F54] mb-2 text-balance">
           Sign Up to get Started
         </h1>
-        <p className="text-[#616161] text-sm text-left">
+        <p className="text-[#616161] text-sm text-center">
           Create an account to unlock tools for confident speaking
         </p>
       </div>
 
       {/* Sign Up Form */}
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-2"
-      >
+      <form onSubmit={handleSubmit} className="space-y-2">
         <div className="space-y-1">
-          <Label
-            htmlFor="email"
-            className="text-sm font-normal text-[#212121]"
-          >
+          <Label htmlFor="email" className="text-sm font-normal text-[#212121]">
             Email
           </Label>
           <Input
@@ -113,7 +112,7 @@ export default function SignUp() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="h-12 rounded-lg border-border bg-input"
+            className="h-12 rounded-lg border-border bg-input focus:bg-white"
             required
           />
         </div>
@@ -125,20 +124,30 @@ export default function SignUp() {
           >
             Password
           </Label>
-          <Input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="h-12 rounded-lg border-border bg-input"
-            required
-          />
+          <div className="relative">
+            <Input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="h-12 rounded-lg border-border bg-input focus:bg-white"
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm cursor-pointer text-gray-700"
+            >
+              {showPassword ? <EyeOff /> : <Eye/>}
+            </button>
+          </div>
         </div>
 
         <div className="flex items-center justify-between py-2">
           <div className="flex items-center space-x-2">
             <Checkbox
-              className="border-border"
+              className="border-border disabled:cursor-not-allowed"
+              disabled
               id="remember"
               checked={rememberMe}
               onCheckedChange={(checked) => setRememberMe(checked as boolean)}
@@ -152,7 +161,8 @@ export default function SignUp() {
           </div>
           <button
             type="button"
-            className="text-sm text-primary cursor-pointer hover:underline"
+            disabled
+            className="text-sm text-primary cursor-pointer hover:underline disabled:cursor-not-allowed"
           >
             Forgot Password?
           </button>
@@ -189,10 +199,7 @@ export default function SignUp() {
           className="w-full h-12 rounded-lg border-border bg-background hover:bg-muted/50 disabled:opacity-60 flex items-center justify-center gap-2"
         >
           {!isSubmittingGoogle && (
-            <svg
-              className="w-5 h-5 mr-2"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
               <path
                 fill="#4285F4"
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -242,7 +249,7 @@ export default function SignUp() {
       </form>
 
       {/* Footer */}
-      <div className="mt-8 pt-6 border-t border-border">
+      {/* <div className="mt-8 pt-6 border-t border-border">
         <div className="flex items-center justify-between text-xs text-muted-foreground">
           <span>© Talk Beta 2025</span>
           <div className="flex items-center gap-4">
@@ -250,7 +257,7 @@ export default function SignUp() {
             <button className="hover:text-primary">Privacy</button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

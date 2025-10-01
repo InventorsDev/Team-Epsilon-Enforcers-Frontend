@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import AImic from "../assets/ai-mic.jpg";
 import cubeImage from "../assets/cube-image.jpg";
 import feedback from "../assets/feedback.jpg";
-import VoiceTraining from "@/assets/Building Charisma in Your Voice.png";
 
 export function HowItWorksSection() {
   return (
