@@ -73,6 +73,14 @@ VITE_SENTRY_DSN=
 - Add video link to `docs/screenshots/` and reference them here:
 
 
+### Project Documentation
+- [Business Logic Documentation](../docs/Business%20Logic%20Documentation%20–%20Talk%20Beta%20Rev%201.pdf)
+- [Functional Requirements Document](../docs/FUNCTIONAL%20REQUIREMENTS%20DOCUMENT%20.pdf)
+- [Product Marketing Documentation](../docs/Product%20Marketing%20Documentation%20–%20Talk%20Beta.pdf)
+- [Product Requirements Document](../docs/Product-Requirements-%20Document%20_Talk%20Beta.docx.pdf)
+
+
+
 ### Contributing
 We welcome contributions! To get started:
 1. Fork the repository and create your feature branch: `git checkout -b feat/amazing-feature`
