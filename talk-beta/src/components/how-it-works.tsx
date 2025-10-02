@@ -7,7 +7,7 @@ import feedback from "../assets/feedback.jpg";
 
 export function HowItWorksSection() {
   return (
-    <section className="px-9 py-16 max-w-7xl mx-auto">
+    <section className="px-4 md:px-9 py-16 max-w-7xl mx-auto">
       <h2 className="text-4xl font-bold text-center mb-16 text-foreground">
         How It Works
       </h2>
@@ -49,7 +49,7 @@ export function HowItWorksSection() {
 
         {/* Record Your Voice */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 text-left">
+          <div className="space-y-6 text-left order-2 md:order-1">
             <h3 className="text-2xl font-bold text-foreground">
               Record Your Voice
             </h3>
@@ -66,7 +66,7 @@ export function HowItWorksSection() {
               </Button>
             </Link>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center order-1 md:order-2">
             <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg">
               <img
                 src={AImic}
@@ -115,7 +115,7 @@ export function HowItWorksSection() {
 
         {/* Instant Feedback */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 text-left">
+          <div className="space-y-6 text-left order-2 md:order-1">
             <h3 className="text-2xl font-bold text-foreground">
               Instant Feedback
             </h3>
@@ -134,7 +134,7 @@ export function HowItWorksSection() {
               </Button>
             </Link>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center order-1 md:order-2">
             <div className="w-full h-full rounded-2xl overflow-hidden shadow-lg">
               <img
                 src={feedback}

@@ -4,7 +4,7 @@ import frame from "../assets/Frame.svg";
 import { useAuth } from "@/context/AuthContext";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu} from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -50,24 +50,29 @@ const NavBar = () => {
       <header className="bg-white border-b border-gray-200">
         <div className="flex items-center justify-between h-16 px-4 md:px-6">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img
-              src={frame}
-              alt="logo"
-              className="h-5"
-            />
+          <div className="flex items-center space-x-2" onClick={() => navigate("/dashboard")}>
+            <img src={frame} alt="logo" className="h-5" />
+            <span
+              className="text-xl font-extrabold text-blue-600"
+              style={{ fontFamily: "Borel, cursive" }}
+            >
+              Talk Beta
+            </span>
             <VisuallyHidden>
-          <div className="flex items-center justify-between h-16 ">
-            <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate("/dashboard")}>
-              <img src={frame} alt="logo" className="h-5" />
-              <span
-                className="text-lg font-extrabold text-blue-600"
-                style={{ fontFamily: "Borel, cursive" }}
-              >
-                Talk Beta
-                    </span>
-                  </div>
-                  </div>
+              <div className="flex items-center justify-between h-16 ">
+                <div
+                  className="flex items-center space-x-2 cursor-pointer"
+                  onClick={() => navigate("/dashboard")}
+                >
+                  <img src={frame} alt="logo" className="h-5" />
+                  <span
+                    className="text-lg font-extrabold text-blue-600"
+                    style={{ fontFamily: "Borel, cursive" }}
+                  >
+                    Talk Beta
+                  </span>
+                </div>
+              </div>
             </VisuallyHidden>
           </div>
 
@@ -108,10 +113,7 @@ const NavBar = () => {
             ) : (
               <>
                 <Link to="/login">
-                  <Button
-                    variant="outline"
-                    className="border-border"
-                  >
+                  <Button variant="outline" className="border-border">
                     Log In
                   </Button>
                 </Link>
@@ -137,16 +139,17 @@ const NavBar = () => {
                   <Menu className="h-6 w-6 text-gray-700" />
                 </Button>
               </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="w-64"
-              >
+              <SheetContent side="right" className="w-64">
                 <div className="flex flex-col h-full">
-                  <div className="flex items-center justify-between mb-6 pl-4">
-                    <span className="text-lg font-extrabold text-blue-600">
+                  <div className="flex items-center justify-start mb-6 pl-4 pt-2 gap-4">
+                    <img src={frame} alt="logo" className="h-5" />
+                    <span
+                      className="text-lg font-extrabold text-blue-600"
+                      style={{ fontFamily: "Borel, cursive" }}
+                    >
                       Talk Beta
                     </span>
-                    <SheetClose asChild>
+                    {/* <SheetClose asChild>
                       <Button
                         variant="ghost"
                         size="icon"
@@ -154,14 +157,11 @@ const NavBar = () => {
                       >
                         <X className="h-6 w-6 text-gray-700" />
                       </Button>
-                    </SheetClose>
+                    </SheetClose> */}
                   </div>
                   <nav className="flex flex-col space-y-4 text-sm pl-4">
                     {navLinks.map(({ to, label }) => (
-                      <SheetClose
-                        asChild
-                        key={to}
-                      >
+                      <SheetClose asChild key={to}>
                         <NavLink
                           to={to}
                           end
