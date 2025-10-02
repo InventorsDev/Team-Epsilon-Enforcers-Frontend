@@ -61,28 +61,12 @@ export default function ViewAnalysis() {
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-gray-600 leading-relaxed">
-              This is an example transcript of your speech. As you speak, the AI
-              analyzes your delivery and provides real-time feedback. You can
-              see how certain words or phrases are highlighted to indicate areas
-              for improvement, such as filler words or pacing issues.
+              Here’s your transcript with feedback. Highlighted words show
+              filler words aim to reduce them for clearer, more confident
+              delivery.
             </p>
 
             <div className="bg-gray-50 p-4 rounded-lg">
-              {/* <p className="text-gray-800 leading-relaxed">
-                "Hello,{" "}
-                <span className="bg-orange-200 px-1 rounded text-orange-800 font-medium">
-                  um
-                </span>
-                , welcome to FluentAI. This platform is designed to help you
-                improve your public speaking skills and build confidence. We
-                focus on key areas like pronunciation, pacing, and overall
-                fluency.{" "}
-                <span className="bg-orange-200 px-1 rounded text-orange-800 font-medium">
-                  Uh
-                </span>
-                , our intelligent system provides instant feedback to guide your
-                progress."
-              </p> */}
               {analysisResult?.transcript ? (
                 <p className="text-gray-800 leading-relaxed">
                   {analysisResult.transcript
@@ -166,9 +150,23 @@ export default function ViewAnalysis() {
                   <h3 className="font-medium text-gray-700">Fluency</h3>
                   <Badge
                     variant="secondary"
-                    className="bg-green-100 text-green-800"
+                    className={`${
+                      analysisResult
+                        ? analysisResult?.scores?.fluency >= 90
+                          ? "bg-red-100 text-green-800"
+                          : analysisResult?.scores?.fluency >= 75
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-red-100 text-red-800"
+                        : `bg-green-100 text-green-800`
+                    }`}
                   >
-                    Excellent
+                    {analysisResult
+                      ? analysisResult?.scores?.fluency >= 90
+                        ? "Excellent"
+                        : analysisResult?.scores?.fluency >= 75
+                        ? "Good"
+                        : "Needs Improvement"
+                      : "Excellent"}
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
@@ -186,13 +184,27 @@ export default function ViewAnalysis() {
             {/* Pronunciation */}
             <Card>
               <CardContent className="">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-2 flex-wrap">
                   <h3 className="font-medium text-gray-700">Pronunciation</h3>
                   <Badge
                     variant="secondary"
-                    className="bg-yellow-100 text-yellow-800"
+                    className={`${
+                      analysisResult
+                        ? analysisResult?.scores?.pronunciation >= 90
+                          ? "bg-green-100 text-green-800"
+                          : analysisResult?.scores?.pronunciation >= 75
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-red-100 text-red-800"
+                        : `bg-yellow-100 text-yellow-800`
+                    }`}
                   >
-                    Good
+                    {analysisResult
+                      ? analysisResult?.scores?.pronunciation >= 90
+                        ? "Excellent"
+                        : analysisResult?.scores?.pronunciation >= 75
+                        ? "Good"
+                        : "Needs Improvement"
+                      : "Good"}
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
@@ -214,15 +226,34 @@ export default function ViewAnalysis() {
                   <h3 className="font-medium text-gray-700">Filler Words</h3>
                   <Badge
                     variant="secondary"
-                    className="bg-blue-100 text-blue-800"
+                    className={`${
+                      analysisResult
+                        ? analysisResult?.details?.filler_words_details
+                            ?.count <= 3
+                          ? "bg-green-100 text-green-800"
+                          : analysisResult?.details?.filler_words_details
+                              ?.count <= 7
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-red-100 text-red-800"
+                        : `bg-green-100 text-green-800`
+                    }`}
                   >
-                    Minimal
+                    {analysisResult
+                      ? analysisResult?.details?.filler_words_details?.count <=
+                        3
+                        ? "Minimal"
+                        : analysisResult?.details?.filler_words_details
+                            ?.count <= 7
+                        ? "Moderate"
+                        : "High"
+                      : "Minimal"}
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
                   <Volume2 size={20} className="text-blue-600" />
                   <span className="text-2xl font-bold text-blue-600">
-                    {analysisResult?.scores?.filler_words || 2} Words
+                    {analysisResult?.details?.filler_words_details?.count || 2}{" "}
+                    Words
                   </span>
                 </div>
                 <p className="text-sm text-left text-gray-600">
@@ -238,9 +269,21 @@ export default function ViewAnalysis() {
                   <h3 className="font-medium text-gray-700">Pacing</h3>
                   <Badge
                     variant="secondary"
-                    className="bg-green-100 text-green-800"
+                    className={`${
+                      analysisResult
+                        ? analysisResult?.scores?.pacing >= 110 &&
+                          analysisResult?.scores?.pacing <= 150
+                          ? "bg-green-100 text-green-800"
+                          : "bg-yellow-100 text-yellow-800"
+                        : `bg-green-100 text-green-800`
+                    }`}
                   >
-                    Optimal
+                    {analysisResult
+                      ? analysisResult?.scores?.pacing >= 110 &&
+                        analysisResult?.scores?.pacing <= 150
+                        ? "Optimal"
+                        : "Adjustable"
+                      : "Optimal"}
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
@@ -262,9 +305,24 @@ export default function ViewAnalysis() {
                   <h3 className="font-medium text-gray-700">Confidence</h3>
                   <Badge
                     variant="secondary"
-                    className="bg-green-100 text-green-800"
+                    className={`${
+                      analysisResult
+                        ? analysisResult?.details?.confidence >= 0.8
+                          ? "bg-green-100 text-green-800"
+                          : analysisResult?.details?.confidence >= 0.5
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-red-100 text-red-800"
+                        : `bg-green-100 text-green-800`
+                    }`}
                   >
-                    Strong
+                    {analysisResult
+                      ? analysisResult?.details?.confidence >= 0.8
+                        ? "High"
+                        : analysisResult?.details?.confidence &&
+                          analysisResult?.details?.confidence >= 0.5
+                        ? "Moderate"
+                        : "Low"
+                      : "High"}
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
@@ -288,17 +346,31 @@ export default function ViewAnalysis() {
               <CardContent className="">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="font-medium text-gray-700">Pauses</h3>
-                  <Badge
+                  {/* <Badge
                     variant="secondary"
-                    className="bg-yellow-100 text-yellow-800"
+                    className={`${
+                      analysisResult?.details?.pauses
+                        ? analysisResult?.details?.pauses <= 5
+                          ? "bg-green-100 text-green-800"
+                          : analysisResult?.details?.pauses <= 10
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-red-100 text-red-800"
+                        : `bg-green-100 text-green-800`
+                    }`}
                   >
-                    Good
-                  </Badge>
+                    {analysisResult?.details?.pauses
+                      ? analysisResult?.details?.pauses <= 5
+                        ? "Good"
+                        : analysisResult?.details?.pauses <= 10
+                        ? "Average"
+                        : "Needs Improvement"
+                      : "Good"}
+                  </Badge> */}
                 </div>
                 <div className="flex items-center gap-2 mb-2">
                   <CirclePause size={20} className="text-blue-600" />
                   <span className="text-2xl font-bold text-blue-600">
-                    {analysisResult?.details?.pauses ?? 5}%
+                    {analysisResult?.details?.pauses ?? 5}
                   </span>
                 </div>
                 <p className="text-sm text-left text-gray-600">
@@ -316,9 +388,21 @@ export default function ViewAnalysis() {
                   </h3>
                   <Badge
                     variant="secondary"
-                    className="bg-green-100 text-green-800"
+                    className={`${
+                      analysisResult
+                        ? analysisResult?.details?.wpm >= 110 &&
+                          analysisResult?.details?.wpm <= 150
+                          ? "bg-green-100 text-green-800"
+                          : "bg-yellow-100 text-yellow-800"
+                        : `bg-green-100 text-green-800`
+                    }`}
                   >
-                    Great
+                    {analysisResult
+                      ? analysisResult?.details?.wpm >= 110 &&
+                        analysisResult?.details?.wpm <= 150
+                        ? "Optimal"
+                        : "Adjustable"
+                      : "Optimal"}
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">
@@ -340,9 +424,23 @@ export default function ViewAnalysis() {
                   <h3 className="font-medium text-gray-700">Word error rate</h3>
                   <Badge
                     variant="secondary"
-                    className="bg-green-100 text-green-800"
+                    className={`${
+                      analysisResult
+                        ? analysisResult?.details?.pauses <= 5
+                          ? "bg-green-100 text-green-800"
+                          : analysisResult?.details?.pauses <= 10
+                          ? "bg-yellow-100 text-yellow-800"
+                          : "bg-red-100 text-red-800"
+                        : `bg-green-100 text-green-800`
+                    }`}
                   >
-                    Excellent
+                    {analysisResult
+                      ? analysisResult?.details?.wer <= 5
+                        ? "Excellent"
+                        : analysisResult?.details?.wer <= 10
+                        ? "Good"
+                        : "Needs Improvement"
+                      : "Excellent"}
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mb-2">

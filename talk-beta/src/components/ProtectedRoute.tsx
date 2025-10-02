@@ -24,7 +24,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
 
   // If no user is logged in, redirect to login
   if (!user) {
-    navigate("/login", { replace: true });
+    navigate("/", { replace: true });
     return null;
   }
 
