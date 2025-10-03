@@ -79,7 +79,7 @@ VITE_SENTRY_DSN=
 - [Product Marketing Documentation](../docs/Product%20Marketing%20Documentation%20–%20Talk%20Beta.pdf)
 - [Product Requirements Document](../docs/Product-Requirements-%20Document%20_Talk%20Beta.docx.pdf)
 - [Cost Breakdown and Fund Request](../docs/Cost%20Breakdown%20&%20Funding%20Request.pdf)
-- [Talk Beta Pitch Deck](../docs/Talk%20Beta%20Pitch%20Deck.pdf)
+- [Talk Beta Pitch Deck](/docs/Talk%20Beta%20Pitch%20Deck.pdf)
 
 
 
