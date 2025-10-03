@@ -74,12 +74,12 @@ VITE_SENTRY_DSN=
 
 
 ### Project Documentation
-- [Business Logic Documentation](../docs/Business%20Logic%20Documentation%20–%20Talk%20Beta%20Rev%201.pdf)
-- [Functional Requirements Document](../docs/FUNCTIONAL%20REQUIREMENTS%20DOCUMENT%20.pdf)
-- [Product Marketing Documentation](../docs/Product%20Marketing%20Documentation%20–%20Talk%20Beta.pdf)
-- [Product Requirements Document](../docs/Product-Requirements-%20Document%20_Talk%20Beta.docx.pdf)
-- [Cost Breakdown and Fund Request](../docs/Cost%20Breakdown%20&%20Funding%20Request.pdf)
-- [Talk Beta Pitch Deck](/docs/Talk%20Beta%20Pitch%20Deck.pdf)
+- [Business Logic Documentation](https://docs.google.com/document/d/1qQ2x4H40lDYoX3yR5eZiiXWXtPOYeFEl/edit?usp=sharing&ouid=109376530630577112455&rtpof=true&sd=true)
+- [Functional Requirements Document](https://docs.google.com/document/d/1YbJiBIVT9O5S0nCpTJysqRo8TB6kNDoC/edit?usp=sharing&ouid=109376530630577112455&rtpof=true&sd=true)
+- [Product Marketing Documentation](https://docs.google.com/document/d/18ZfduXybmTjmIVBaXefOwqgBv_rNjQfC/edit?usp=sharing&ouid=109376530630577112455&rtpof=true&sd=true)
+- [Product Requirements Document](https://docs.google.com/document/d/1dOMpoJqxtRBL8EK4uw8kFRX1g9-8I1rT/edit?usp=sharing&ouid=109376530630577112455&rtpof=true&sd=true)
+- [Cost Breakdown and Fund Request](https://docs.google.com/document/d/1he6N6YRIjRaRZhmND62vbgRnyO3PGcPKc5M7kFKz7EM/edit?usp=drivesdk)
+- [Talk Beta Pitch Deck](https://www.canva.com/design/DAGyAfRSaBY/jDfrrd_4culWjFafiyCLIQ/edit)
 
 
 
