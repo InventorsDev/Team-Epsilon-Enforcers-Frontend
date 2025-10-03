@@ -74,6 +74,7 @@ VITE_SENTRY_DSN=
 
 
 ### Project Documentation
+- [Try Talk-Beta](https://talkbeta.netlify.app/)
 - [Business Logic Documentation](https://docs.google.com/document/d/1qQ2x4H40lDYoX3yR5eZiiXWXtPOYeFEl/edit?usp=sharing&ouid=109376530630577112455&rtpof=true&sd=true)
 - [Functional Requirements Document](https://docs.google.com/document/d/1YbJiBIVT9O5S0nCpTJysqRo8TB6kNDoC/edit?usp=sharing&ouid=109376530630577112455&rtpof=true&sd=true)
 - [Product Marketing Documentation](https://docs.google.com/document/d/18ZfduXybmTjmIVBaXefOwqgBv_rNjQfC/edit?usp=sharing&ouid=109376530630577112455&rtpof=true&sd=true)
